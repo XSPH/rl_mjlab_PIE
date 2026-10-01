@@ -1,0 +1,4624 @@
+{
+  "repository": "rl_mjlab_PIE",
+  "snapshot_type": "source-only; upstream history retained locally",
+  "upstream": {
+    "url": "https://github.com/unitreerobotics/unitree_rl_mjlab.git",
+    "commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790"
+  },
+  "max_file_size_bytes": 26214400,
+  "excluded_files": [
+    "deploy/robots/g1/config/policy/mimic/dance1_subject2/exported/policy.onnx",
+    "deploy/robots/g1/config/policy/mimic/dance1_subject2/params/dance1_subject2.npz",
+    "deploy/robots/g1/config/policy/velocity/v0/exported/policy.onnx",
+    "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/libonnxruntime.so",
+    "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/libonnxruntime.so.1",
+    "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/libonnxruntime.so.1.22.0",
+    "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/libonnxruntime_providers_shared.so",
+    "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/libonnxruntime.so.1",
+    "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/libonnxruntime.so.1.22.0",
+    "simulate/mujoco/bin/mujoco_plugin/libactuator.so",
+    "simulate/mujoco/bin/mujoco_plugin/libelasticity.so",
+    "simulate/mujoco/bin/mujoco_plugin/libsdf_plugin.so",
+    "simulate/mujoco/bin/mujoco_plugin/libsensor.so",
+    "simulate/mujoco/lib/libmujoco.so",
+    "simulate/mujoco/lib/libmujoco.so.3.3.6"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 663,
+      "mode": "100755",
+      "sha256": "1c3f73d6cc3148feda7e2adfce55f996dcd69d8a076211142fdae32a3e38e983"
+    },
+    {
+      "path": "LICENCE",
+      "bytes": 11362,
+      "mode": "100644",
+      "sha256": "ff28cacaef7b9919a0fb905136cf4ccffba5191522bf5d024c4339932c0edc28"
+    },
+    {
+      "path": "PIE_NETWORK.md",
+      "bytes": 7078,
+      "mode": "100644",
+      "sha256": "89ee93506443fd65fa5ca59edf78cfb5ba9dd59ae6fbd83dd61b4d3eb263d7f4"
+    },
+    {
+      "path": "PUBLICATION.md",
+      "bytes": 1649,
+      "mode": "100644",
+      "sha256": "ebc1b1a5889558ae5610bc318703fea2c91ab138054f45824d586b7afd477eba"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9626,
+      "mode": "100644",
+      "sha256": "647e453a70a490f9478eca021f541812a3ab82f8f4e24319e28ae2114a78eb2d"
+    },
+    {
+      "path": "README_PIE.md",
+      "bytes": 4564,
+      "mode": "100644",
+      "sha256": "853c2805c41f0f51cabc27c561b786421beccbe5599d814e90f095f4653a4aa6"
+    },
+    {
+      "path": "README_zh.md",
+      "bytes": 9602,
+      "mode": "100644",
+      "sha256": "340a8ef54be439e1ec369a3701282da304f8797237202ae2ccbab008a1bdb67e"
+    },
+    {
+      "path": "deploy/include/FSM/BaseState.h",
+      "bytes": 1775,
+      "mode": "100644",
+      "sha256": "12fc21a7efe178f4cc4ce5cd468a328e4d14cfa682fc76b80089951843768758"
+    },
+    {
+      "path": "deploy/include/FSM/CtrlFSM.h",
+      "bytes": 3367,
+      "mode": "100644",
+      "sha256": "c1e29d476a15ee29ebfb52dac1aa2cb769f23fce7d4470d27cb4981ac27bb253"
+    },
+    {
+      "path": "deploy/include/FSM/FSMState.h",
+      "bytes": 2041,
+      "mode": "100644",
+      "sha256": "b0101443e36fe1ea5ee1b280edbb7436883e1cafd04e631d8760d242babe0a7d"
+    },
+    {
+      "path": "deploy/include/FSM/State_FixStand.h",
+      "bytes": 1657,
+      "mode": "100644",
+      "sha256": "9cbd998b3980624b41f35414e3def668ed67b260d26170e6af339f251ce23221"
+    },
+    {
+      "path": "deploy/include/FSM/State_Passive.h",
+      "bytes": 1202,
+      "mode": "100644",
+      "sha256": "86b0a9c6499950d4c67e4887d375694c1a4d6b725c2fabff3e40d6c2a2cbb088"
+    },
+    {
+      "path": "deploy/include/FSM/State_RLBase.h",
+      "bytes": 1783,
+      "mode": "100644",
+      "sha256": "97a4fc5b548f326879ce0ddf4c440e70db84bd2db1e96826b374bca78c9ba0ad"
+    },
+    {
+      "path": "deploy/include/LinearInterpolator.h",
+      "bytes": 952,
+      "mode": "100644",
+      "sha256": "8ba30578f175d1719d3646a347eabf249bc1caca09b444d8352744f1635a2701"
+    },
+    {
+      "path": "deploy/include/isaaclab/algorithms/algorithms.h",
+      "bytes": 3540,
+      "mode": "100644",
+      "sha256": "225253230c4ef80dcc0340acee65b0232764110f07f81ef0a8ec1be7b97b00e3"
+    },
+    {
+      "path": "deploy/include/isaaclab/assets/articulation/articulation.h",
+      "bytes": 1167,
+      "mode": "100644",
+      "sha256": "76c3170de063d7024eba60618cff574eb9c7b3f4984197d52efbf31c66c03468"
+    },
+    {
+      "path": "deploy/include/isaaclab/devices/keyboard/keyboard.h",
+      "bytes": 3186,
+      "mode": "100644",
+      "sha256": "1921a201be7f3190cede4b4dbde5079d1313d8baeb2e41859fa9d8c3ab7b6205"
+    },
+    {
+      "path": "deploy/include/isaaclab/envs/manager_based_rl_env.h",
+      "bytes": 2355,
+      "mode": "100644",
+      "sha256": "6ed7b88afb1feb58e329180abcef0062811a5b29a7b0bdd53da94e20078f5458"
+    },
+    {
+      "path": "deploy/include/isaaclab/envs/mdp/actions/joint_actions.h",
+      "bytes": 2788,
+      "mode": "100644",
+      "sha256": "e6c8c77139e308712fd2a340604f55f318de7b9b075196cdf16c223bf390b78c"
+    },
+    {
+      "path": "deploy/include/isaaclab/envs/mdp/observations/observations.h",
+      "bytes": 3946,
+      "mode": "100644",
+      "sha256": "6b3fb08a75ef44600aa222ef131b66d4404968c0f2b0f9879bd091920a4ee5e5"
+    },
+    {
+      "path": "deploy/include/isaaclab/envs/mdp/terminations.h",
+      "bytes": 347,
+      "mode": "100644",
+      "sha256": "12461ececd6407d79e5e8960aeba5233a3dba14ab0c1f7a5071f6ead47d8b849"
+    },
+    {
+      "path": "deploy/include/isaaclab/manager/action_manager.h",
+      "bytes": 3318,
+      "mode": "100644",
+      "sha256": "2a0cb3b144c548a40f1d452447975d80d21b58bf44298fbf5ff108012594a7ac"
+    },
+    {
+      "path": "deploy/include/isaaclab/manager/manager_term_cfg.h",
+      "bytes": 1871,
+      "mode": "100644",
+      "sha256": "5c334bf97398acf8d940581f6a722490c248cd2d11f4875df5c29b79d946cd70"
+    },
+    {
+      "path": "deploy/include/isaaclab/manager/observation_manager.h",
+      "bytes": 5049,
+      "mode": "100644",
+      "sha256": "0198290eb4b90d46f39a6c21615be1e714719762f843723649eec3c653423b8e"
+    },
+    {
+      "path": "deploy/include/isaaclab/utils/utils.h",
+      "bytes": 1287,
+      "mode": "100644",
+      "sha256": "78091620b3f79c17cf446aa25fe48b29e359ef35060c268ba2de7feaf8e89cb3"
+    },
+    {
+      "path": "deploy/include/param.h",
+      "bytes": 4819,
+      "mode": "100644",
+      "sha256": "6cfe9b11dcedc8ce30c975e1981388c6cab0891a9e8cf73e533843ae36a49142"
+    },
+    {
+      "path": "deploy/include/unitree_articulation.h",
+      "bytes": 1368,
+      "mode": "100644",
+      "sha256": "5a2d02fc0370de50f78f233420b34dcece5773e45692db9aecf871153d31c775"
+    },
+    {
+      "path": "deploy/include/unitree_joystick_dsl.hpp",
+      "bytes": 12805,
+      "mode": "100644",
+      "sha256": "d04b88fc4101aa5d761f0fa9c86e1b4f695771adc859dae11bbf898f4c065bbf"
+    },
+    {
+      "path": "deploy/robots/a2/CMakeLists.txt",
+      "bytes": 976,
+      "mode": "100644",
+      "sha256": "ac27bdc8e268d39220a1bab82ba975035b5d6a89dfa99cb93919eee7dc86783c"
+    },
+    {
+      "path": "deploy/robots/a2/config/config.yaml",
+      "bytes": 794,
+      "mode": "100644",
+      "sha256": "d555b107d1c3c758f8d0e4d4c555075cb61c517a91faace2c35877b54f7cb971"
+    },
+    {
+      "path": "deploy/robots/a2/config/policy/velocity/v0/params/deploy.yaml",
+      "bytes": 1528,
+      "mode": "100644",
+      "sha256": "3f01323f5f0c3cbd3e4e06c018e0ec8a8d62008a20ae54f4f067dfd79dd6e422"
+    },
+    {
+      "path": "deploy/robots/a2/include/Types.h",
+      "bytes": 227,
+      "mode": "100644",
+      "sha256": "fbc6b7696f0dad254ee0523d2c73ec5b9f7d78e78dc42d7e756c654ac94ed91c"
+    },
+    {
+      "path": "deploy/robots/a2/main.cpp",
+      "bytes": 1718,
+      "mode": "100644",
+      "sha256": "85d98d396701896708f10f7204d1030399f5a3316b0d26b8d33b92bba81da4af"
+    },
+    {
+      "path": "deploy/robots/a2/src/State_RLBase.cpp",
+      "bytes": 1200,
+      "mode": "100644",
+      "sha256": "f45980cd3da6f0c8be0c02f0206b6a9ee0ff8426e07b902de40f54962536a9ce"
+    },
+    {
+      "path": "deploy/robots/g1/CMakeLists.txt",
+      "bytes": 1218,
+      "mode": "100644",
+      "sha256": "975c5564eb5c6b297f8caaf73eadfbb79189e46d558b8cd3be6549c5bebdf65a"
+    },
+    {
+      "path": "deploy/robots/g1/config/config.yaml",
+      "bytes": 1468,
+      "mode": "100644",
+      "sha256": "592d3e513cc4a4565a8c9d834bd25180372bc6b98363c18a2b4cf941e5aafe20"
+    },
+    {
+      "path": "deploy/robots/g1/config/policy/mimic/dance1_subject2/exported/policy.onnx.data",
+      "bytes": 990416,
+      "mode": "100644",
+      "sha256": "5ad029d789d502857ce3056c14d3235f7a2648375f12ffd8d781943b4948473c"
+    },
+    {
+      "path": "deploy/robots/g1/config/policy/mimic/dance1_subject2/params/deploy.yaml",
+      "bytes": 2394,
+      "mode": "100644",
+      "sha256": "61e81a3ec7d3f3c7286ee39d043e8ca4f8e05257a5f6341825955a47e31bfbc1"
+    },
+    {
+      "path": "deploy/robots/g1/config/policy/velocity/v0/params/deploy.yaml",
+      "bytes": 2289,
+      "mode": "100644",
+      "sha256": "01e1cf3f6ec44e9942494fbb4a9904df07201e14e5551a277f38d7c7d1bda28d"
+    },
+    {
+      "path": "deploy/robots/g1/include/State_Mimic.h",
+      "bytes": 4189,
+      "mode": "100644",
+      "sha256": "e0aaba6a4fbef55269c6ea4410350d71580ea81d6c501c388b09fa2547463aa0"
+    },
+    {
+      "path": "deploy/robots/g1/include/Types.h",
+      "bytes": 227,
+      "mode": "100644",
+      "sha256": "fbc6b7696f0dad254ee0523d2c73ec5b9f7d78e78dc42d7e756c654ac94ed91c"
+    },
+    {
+      "path": "deploy/robots/g1/main.cpp",
+      "bytes": 1859,
+      "mode": "100644",
+      "sha256": "8fc5603d41d4b6a0855af65a4e714be41c726ef7c84cc26424b96900e9aeb400"
+    },
+    {
+      "path": "deploy/robots/g1/src/State_Mimic.cpp",
+      "bytes": 6301,
+      "mode": "100644",
+      "sha256": "7bbde6b9c198a89b7770a85c182b619b07fa68471383097592b4f3226ee0b3a8"
+    },
+    {
+      "path": "deploy/robots/g1/src/State_RLBase.cpp",
+      "bytes": 2026,
+      "mode": "100644",
+      "sha256": "b7ee341cbffd6703c34111e688f706d76cf2e85907fa7505bbaed698b00359e5"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/CMakeLists.txt",
+      "bytes": 1218,
+      "mode": "100644",
+      "sha256": "975c5564eb5c6b297f8caaf73eadfbb79189e46d558b8cd3be6549c5bebdf65a"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/config/config.yaml",
+      "bytes": 1480,
+      "mode": "100644",
+      "sha256": "9689071a6d8a2ff574fcb09d488a08917f887eaa32a91b738f6268f7876895cb"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/config/policy/mimic/dance1_subject2/params/deploy.yaml",
+      "bytes": 2100,
+      "mode": "100644",
+      "sha256": "2c3da2318a3e4b656b493ff469fa4d18fab632c53841867c6be390cfa54b9326"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/config/policy/velocity/v0/params/deploy.yaml",
+      "bytes": 2055,
+      "mode": "100644",
+      "sha256": "6ce7557e983eaebfc91d62faf7a38f78b13ee1cacc9202bd94f0fef4965d04ae"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/include/State_Mimic.h",
+      "bytes": 4189,
+      "mode": "100644",
+      "sha256": "e0aaba6a4fbef55269c6ea4410350d71580ea81d6c501c388b09fa2547463aa0"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/include/Types.h",
+      "bytes": 227,
+      "mode": "100644",
+      "sha256": "fbc6b7696f0dad254ee0523d2c73ec5b9f7d78e78dc42d7e756c654ac94ed91c"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/main.cpp",
+      "bytes": 1842,
+      "mode": "100644",
+      "sha256": "7c367a77138fb5ad2295cf40ccc35679a6aa093c2a2d56bcc10d997886a56b67"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/src/State_Mimic.cpp",
+      "bytes": 6017,
+      "mode": "100644",
+      "sha256": "91f673999c2968ae14f5ffd02c0bb4be681693ff6a995a6abf5cfb392fc9cf14"
+    },
+    {
+      "path": "deploy/robots/g1_23dof/src/State_RLBase.cpp",
+      "bytes": 1200,
+      "mode": "100644",
+      "sha256": "f45980cd3da6f0c8be0c02f0206b6a9ee0ff8426e07b902de40f54962536a9ce"
+    },
+    {
+      "path": "deploy/robots/go2/CMakeLists.txt",
+      "bytes": 978,
+      "mode": "100644",
+      "sha256": "3266f84177ec8bcb90faedf8e84314db2b8a917079de31d99887b63a4248a9b3"
+    },
+    {
+      "path": "deploy/robots/go2/config/config.yaml",
+      "bytes": 774,
+      "mode": "100644",
+      "sha256": "d76afb650a227f6eeb79b9f1497d0d6fbc9d664fcfbb24e4312e0f652b6bc818"
+    },
+    {
+      "path": "deploy/robots/go2/config/policy/velocity/v0/params/deploy.yaml",
+      "bytes": 1503,
+      "mode": "100644",
+      "sha256": "09678aa4748c2fc152607a1d61f044f69569f165b52c589bc6f03c5cb098853b"
+    },
+    {
+      "path": "deploy/robots/go2/include/Types.h",
+      "bytes": 183,
+      "mode": "100644",
+      "sha256": "19332024067455430fb1fd71428cb775ebe8881125fed4b7f629b7cb4e50e919"
+    },
+    {
+      "path": "deploy/robots/go2/main.cpp",
+      "bytes": 1529,
+      "mode": "100644",
+      "sha256": "621b6dcfac43d7dfa12b6c350cf47ed1af4d23624d091ebbb7399449d74e7f9e"
+    },
+    {
+      "path": "deploy/robots/go2/src/State_RLBase.cpp",
+      "bytes": 1200,
+      "mode": "100644",
+      "sha256": "f45980cd3da6f0c8be0c02f0206b6a9ee0ff8426e07b902de40f54962536a9ce"
+    },
+    {
+      "path": "deploy/robots/h1_2/CMakeLists.txt",
+      "bytes": 980,
+      "mode": "100644",
+      "sha256": "11dcda1430b46ddf5914e7c85c41a5672c65f1f1d15ecad3b4605326fce65df0"
+    },
+    {
+      "path": "deploy/robots/h1_2/config/config.yaml",
+      "bytes": 1135,
+      "mode": "100644",
+      "sha256": "4f04523bf73f76e7fda1268c92a2b7ed7b39dc9ce45a06ff1dabf50ceadb795c"
+    },
+    {
+      "path": "deploy/robots/h1_2/config/policy/velocity/v0/params/deploy.yaml",
+      "bytes": 2191,
+      "mode": "100644",
+      "sha256": "40d3f8b09f48c477083fd5b45ab59fb1f03e32d6f5862fb5f7dac10f6d620c83"
+    },
+    {
+      "path": "deploy/robots/h1_2/include/Types.h",
+      "bytes": 227,
+      "mode": "100644",
+      "sha256": "fbc6b7696f0dad254ee0523d2c73ec5b9f7d78e78dc42d7e756c654ac94ed91c"
+    },
+    {
+      "path": "deploy/robots/h1_2/main.cpp",
+      "bytes": 1724,
+      "mode": "100644",
+      "sha256": "25d1212964d7ba0e55a521c8415ead71c14ee80cc69967ec6617d867685ff545"
+    },
+    {
+      "path": "deploy/robots/h1_2/src/State_RLBase.cpp",
+      "bytes": 1200,
+      "mode": "100644",
+      "sha256": "f45980cd3da6f0c8be0c02f0206b6a9ee0ff8426e07b902de40f54962536a9ce"
+    },
+    {
+      "path": "deploy/robots/r1/CMakeLists.txt",
+      "bytes": 1218,
+      "mode": "100644",
+      "sha256": "fcb61d51ecc1a7b34542c2868a5ca7e2e3a7320d9236421c026d17524140657e"
+    },
+    {
+      "path": "deploy/robots/r1/config/config.yaml",
+      "bytes": 1096,
+      "mode": "100644",
+      "sha256": "c6c5346c31b4d5ed3b704c26347033f66ecd54090d07ea5cf852c3507ad45151"
+    },
+    {
+      "path": "deploy/robots/r1/config/policy/velocity/v0/params/deploy.yaml",
+      "bytes": 2011,
+      "mode": "100644",
+      "sha256": "6f54a78d5f20155931cdbf5e639993fb2c6c93aa29acc5976acc04acf36cb2d0"
+    },
+    {
+      "path": "deploy/robots/r1/include/Types.h",
+      "bytes": 227,
+      "mode": "100644",
+      "sha256": "fbc6b7696f0dad254ee0523d2c73ec5b9f7d78e78dc42d7e756c654ac94ed91c"
+    },
+    {
+      "path": "deploy/robots/r1/main.cpp",
+      "bytes": 1722,
+      "mode": "100644",
+      "sha256": "2f69362ed992d9ab267cc1af33c3f4ad2c7e4d64f72f11daa645f00dcc7f3cbb"
+    },
+    {
+      "path": "deploy/robots/r1/src/State_RLBase.cpp",
+      "bytes": 1201,
+      "mode": "100644",
+      "sha256": "cec0f73ae48a6e3cd02734141bb59b2195529fcda43fe229301eedf14085af99"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/CMakeLists.txt",
+      "bytes": 1053,
+      "mode": "100644",
+      "sha256": "99d38ddf9ed97154f69e58d351ba59f31661cac9797dc3da3584e7b58b1aa293"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/LICENSE",
+      "bytes": 1073,
+      "mode": "100644",
+      "sha256": "1ff6fa94ad29d941ceb3bdd5ebfb260ddba4c3e962c50fb7a66c899e769de1ff"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/README.md",
+      "bytes": 2103,
+      "mode": "100644",
+      "sha256": "37b385c333ff1aa44f2e169e983db91bc96fa1e5abd8e6aa244cc178209e7c9f"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/cnpy.cpp",
+      "bytes": 11468,
+      "mode": "100644",
+      "sha256": "66ba14e7f40b4872ed34f673ff0eeb7d866fd77f69910edbbb18bf6a2f4a02f6"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/cnpy.h",
+      "bytes": 10917,
+      "mode": "100644",
+      "sha256": "68a34a847cfed2dfcc1dc8bcd495cdb51477061536d670161a62c5103547ae93"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/example1.cpp",
+      "bytes": 1961,
+      "mode": "100644",
+      "sha256": "3ee8a55ee9bc98d152d7b6d825bce972b8ff12e46323d3066822b9505edd30f6"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/mat2npz",
+      "bytes": 333,
+      "mode": "100644",
+      "sha256": "d8778b6898e5f0a317644168c385ee406f341c3a8baa48503b50f35fb7d3b6db"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/npy2mat",
+      "bytes": 253,
+      "mode": "100644",
+      "sha256": "b83ea184901a6f450e562aa708f60a1192ed78a27c9461518c93db9079c2c263"
+    },
+    {
+      "path": "deploy/thirdparty/cnpy/npz2mat",
+      "bytes": 271,
+      "mode": "100755",
+      "sha256": "aca7a3c29cf88ff9b59c0794b8f66e956f894f08b43b5bf1ea0e2a65758f97e9"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/GIT_COMMIT_ID",
+      "bytes": 41,
+      "mode": "100644",
+      "sha256": "ab88b50d42ba22ee6a870d00b46e5e64378d7a17a4f6f3f2273cff616c5a8f7f"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/LICENSE",
+      "bytes": 1073,
+      "mode": "100644",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/Privacy.md",
+      "bytes": 2469,
+      "mode": "100644",
+      "sha256": "9a15f9fd9d4c7b6dfc35f237f461863f84f8f73cf6189e330818a674d3828871"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/README.md",
+      "bytes": 6980,
+      "mode": "100644",
+      "sha256": "6a49147ec200116fcc1664b661a1776fdb2327154a4ad88edd2efa4fc1efb1c3"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/ThirdPartyNotices.txt",
+      "bytes": 326866,
+      "mode": "100644",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/VERSION_NUMBER",
+      "bytes": 7,
+      "mode": "100644",
+      "sha256": "a482aec6f30758f5ba391b686d1f33d8ef1ab78ac649da44307ae41eb5ecad43"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/core/providers/custom_op_context.h",
+      "bytes": 296,
+      "mode": "100644",
+      "sha256": "c1f2a96c0de1978b0f2fbf60bf1b2d50c6412d487c1f5d68ac5ffa8e01b46ee4"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/core/providers/resource.h",
+      "bytes": 360,
+      "mode": "100644",
+      "sha256": "7ee6117bffd2aad1f6a4865d88c0a2ae39964c757be0693b8569ac7000a1d13c"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/cpu_provider_factory.h",
+      "bytes": 397,
+      "mode": "100644",
+      "sha256": "0de52d129c718c07ee71a16b4953d8d483df019746a11caad77a0650a2f4ed47"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_c_api.h",
+      "bytes": 275409,
+      "mode": "100644",
+      "sha256": "d683537d0fdc29e977b5520f7f15d87a0ac212ae6d94fa9be8893a52655621ae"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_cxx_api.h",
+      "bytes": 128360,
+      "mode": "100644",
+      "sha256": "28b21dfc371fb53d1ba67356adeb124f36643ee5ab6f1ad2e9afbf09eb4bf305"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_cxx_inline.h",
+      "bytes": 104233,
+      "mode": "100644",
+      "sha256": "c41b9a11aac46851f68f4bd888bb2444a0e1eb6b37eadb41bf15f5154b48ea31"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_float16.h",
+      "bytes": 17860,
+      "mode": "100644",
+      "sha256": "6c4db3d1954b266c4febe413351af86cac922e3448538e7e452e51d646e56a4a"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_lite_custom_op.h",
+      "bytes": 62225,
+      "mode": "100644",
+      "sha256": "967e36eb375e975a3b88e599129394317f790a987f266d522fbe3d02c5211fd3"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_run_options_config_keys.h",
+      "bytes": 2952,
+      "mode": "100644",
+      "sha256": "973037c14b0f1af0854ae25cd676776f79dbcfd2a6791f6ee17a5374c2a62550"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_session_options_config_keys.h",
+      "bytes": 23667,
+      "mode": "100644",
+      "sha256": "301c304aa5082549148b59d64e70df951821eb111aea0690e3edeef6994ef182"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/provider_options.h",
+      "bytes": 480,
+      "mode": "100644",
+      "sha256": "cb7206ffd06ba31b9f7e5f6089a6206f0c720c10c3adcc61db7f829c86691cfc"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/cmake/onnxruntime/onnxruntimeConfig.cmake",
+      "bytes": 939,
+      "mode": "100644",
+      "sha256": "880b8c3ceae1ac013b7442b852ae4f7674a439803a2f8dcb875f5043913e62bc"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/cmake/onnxruntime/onnxruntimeConfigVersion.cmake",
+      "bytes": 2765,
+      "mode": "100644",
+      "sha256": "6bfd181b99cdf63ab8f7431e32a3c98663dc3895fbb61a9cca4f273cb3465614"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/cmake/onnxruntime/onnxruntimeTargets-release.cmake",
+      "bytes": 921,
+      "mode": "100644",
+      "sha256": "b1d1302cee8c0d99b2628e15120091dcef79f9e307270a101bb3932983df3344"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/cmake/onnxruntime/onnxruntimeTargets.cmake",
+      "bytes": 4173,
+      "mode": "100644",
+      "sha256": "0b84a062f97cfdb408a8eb17e5a2cc72df2bb171521785ff2f67aae39310da2a"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/pkgconfig/libonnxruntime.pc",
+      "bytes": 332,
+      "mode": "100644",
+      "sha256": "31b22859580351c73f6d868180e47ac890b05a7b38db49e03ffad6047efcf233"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/GIT_COMMIT_ID",
+      "bytes": 41,
+      "mode": "100644",
+      "sha256": "ab88b50d42ba22ee6a870d00b46e5e64378d7a17a4f6f3f2273cff616c5a8f7f"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/LICENSE",
+      "bytes": 1073,
+      "mode": "100644",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/Privacy.md",
+      "bytes": 2469,
+      "mode": "100644",
+      "sha256": "9a15f9fd9d4c7b6dfc35f237f461863f84f8f73cf6189e330818a674d3828871"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/README.md",
+      "bytes": 6980,
+      "mode": "100644",
+      "sha256": "6a49147ec200116fcc1664b661a1776fdb2327154a4ad88edd2efa4fc1efb1c3"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/ThirdPartyNotices.txt",
+      "bytes": 326866,
+      "mode": "100644",
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/VERSION_NUMBER",
+      "bytes": 7,
+      "mode": "100644",
+      "sha256": "a482aec6f30758f5ba391b686d1f33d8ef1ab78ac649da44307ae41eb5ecad43"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/core/providers/custom_op_context.h",
+      "bytes": 296,
+      "mode": "100644",
+      "sha256": "c1f2a96c0de1978b0f2fbf60bf1b2d50c6412d487c1f5d68ac5ffa8e01b46ee4"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/core/providers/resource.h",
+      "bytes": 360,
+      "mode": "100644",
+      "sha256": "7ee6117bffd2aad1f6a4865d88c0a2ae39964c757be0693b8569ac7000a1d13c"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/cpu_provider_factory.h",
+      "bytes": 397,
+      "mode": "100644",
+      "sha256": "0de52d129c718c07ee71a16b4953d8d483df019746a11caad77a0650a2f4ed47"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_c_api.h",
+      "bytes": 275409,
+      "mode": "100644",
+      "sha256": "d683537d0fdc29e977b5520f7f15d87a0ac212ae6d94fa9be8893a52655621ae"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_cxx_api.h",
+      "bytes": 128360,
+      "mode": "100644",
+      "sha256": "28b21dfc371fb53d1ba67356adeb124f36643ee5ab6f1ad2e9afbf09eb4bf305"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_cxx_inline.h",
+      "bytes": 104233,
+      "mode": "100644",
+      "sha256": "c41b9a11aac46851f68f4bd888bb2444a0e1eb6b37eadb41bf15f5154b48ea31"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_float16.h",
+      "bytes": 17860,
+      "mode": "100644",
+      "sha256": "6c4db3d1954b266c4febe413351af86cac922e3448538e7e452e51d646e56a4a"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_lite_custom_op.h",
+      "bytes": 62225,
+      "mode": "100644",
+      "sha256": "967e36eb375e975a3b88e599129394317f790a987f266d522fbe3d02c5211fd3"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_run_options_config_keys.h",
+      "bytes": 2952,
+      "mode": "100644",
+      "sha256": "973037c14b0f1af0854ae25cd676776f79dbcfd2a6791f6ee17a5374c2a62550"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_session_options_config_keys.h",
+      "bytes": 23667,
+      "mode": "100644",
+      "sha256": "301c304aa5082549148b59d64e70df951821eb111aea0690e3edeef6994ef182"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/provider_options.h",
+      "bytes": 480,
+      "mode": "100644",
+      "sha256": "cb7206ffd06ba31b9f7e5f6089a6206f0c720c10c3adcc61db7f829c86691cfc"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/cmake/onnxruntime/onnxruntimeConfig.cmake",
+      "bytes": 939,
+      "mode": "100644",
+      "sha256": "880b8c3ceae1ac013b7442b852ae4f7674a439803a2f8dcb875f5043913e62bc"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/cmake/onnxruntime/onnxruntimeConfigVersion.cmake",
+      "bytes": 2765,
+      "mode": "100644",
+      "sha256": "6bfd181b99cdf63ab8f7431e32a3c98663dc3895fbb61a9cca4f273cb3465614"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/cmake/onnxruntime/onnxruntimeTargets-release.cmake",
+      "bytes": 921,
+      "mode": "100644",
+      "sha256": "b1d1302cee8c0d99b2628e15120091dcef79f9e307270a101bb3932983df3344"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/cmake/onnxruntime/onnxruntimeTargets.cmake",
+      "bytes": 4173,
+      "mode": "100644",
+      "sha256": "0b84a062f97cfdb408a8eb17e5a2cc72df2bb171521785ff2f67aae39310da2a"
+    },
+    {
+      "path": "deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/pkgconfig/libonnxruntime.pc",
+      "bytes": 332,
+      "mode": "100644",
+      "sha256": "31b22859580351c73f6d868180e47ac890b05a7b38db49e03ffad6047efcf233"
+    },
+    {
+      "path": "doc/gif/g1-mimic-real.gif",
+      "bytes": 6868699,
+      "mode": "100644",
+      "sha256": "5e68c69bfb5b76d4d7baca4339edd3d69a9b2fc9f8e5ff7126beede42bf752ee"
+    },
+    {
+      "path": "doc/gif/g1-mimic.gif",
+      "bytes": 6168092,
+      "mode": "100644",
+      "sha256": "10d0d3be3a4f6ba9dc9fd6f624f26c4fb757060d3eb0d30dffec050921b78852"
+    },
+    {
+      "path": "doc/gif/g1-velocity-real.gif",
+      "bytes": 7089665,
+      "mode": "100644",
+      "sha256": "cd1a94f9c1191e3338c6d72bfcb13fd04a7772e866e34d7bdcebabaa7ab8e958"
+    },
+    {
+      "path": "doc/gif/g1-velocity.gif",
+      "bytes": 4636609,
+      "mode": "100644",
+      "sha256": "7c3b65a4be71845d09c9e2ac56abaf3232eb4d4337a764a7ff9a54be720a2937"
+    },
+    {
+      "path": "doc/gif/go2-velocity-real.gif",
+      "bytes": 5021264,
+      "mode": "100644",
+      "sha256": "d1d3d2ebfb9bbb9dce9fe5ada46a4b71e20dcb9fca6454332fc09956dbd845c8"
+    },
+    {
+      "path": "doc/gif/go2-velocity.gif",
+      "bytes": 3321357,
+      "mode": "100644",
+      "sha256": "81aef02f0d0f4c98409c13a55b2bf8d2c5f7a36f29f6cd074d822ab1ab99d4f1"
+    },
+    {
+      "path": "doc/gif/h1_2-velocity-real.gif",
+      "bytes": 1821138,
+      "mode": "100644",
+      "sha256": "4ddce89eadb1c9a5ff947a97ae8979efb5ff18cbe6abea2325fc38baf335f9d6"
+    },
+    {
+      "path": "doc/gif/h1_2-velocity.gif",
+      "bytes": 5636388,
+      "mode": "100644",
+      "sha256": "91a8810f2b53da6043ab6be1e97bea45a060f765542f9eb3910e3e097360ad8c"
+    },
+    {
+      "path": "doc/license/cnpy-license",
+      "bytes": 1072,
+      "mode": "100644",
+      "sha256": "9c573bd96668a04df04be5449b9da9f02f60e15ddc333119bf95fd32768b48d5"
+    },
+    {
+      "path": "doc/license/mjlab-license",
+      "bytes": 11352,
+      "mode": "100644",
+      "sha256": "8ca04d9dbbccd20f0f1842fb33e13949f9e57064b150dad36af8e7a751ca3321"
+    },
+    {
+      "path": "doc/license/onnxruntime-license",
+      "bytes": 1073,
+      "mode": "100644",
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "path": "doc/setup_en.md",
+      "bytes": 1919,
+      "mode": "100644",
+      "sha256": "7522f2f5d61ccb7dc321a1053f4007436f4d6923e92a23da9bc87224e77b27b6"
+    },
+    {
+      "path": "doc/setup_zh.md",
+      "bytes": 1662,
+      "mode": "100644",
+      "sha256": "8e42bb5e29e24762b527245176246317899e810a956efe71271f5023c997e71d"
+    },
+    {
+      "path": "docs/code_review_2026-10-01.md",
+      "bytes": 14379,
+      "mode": "100644",
+      "sha256": "5b61604777b4f5778bfd94096be40630849642bf691598eba8fe7b90ba34d827"
+    },
+    {
+      "path": "docs/environment_versions.json",
+      "bytes": 2814,
+      "mode": "100644",
+      "sha256": "dfbd996306be59a6add3cbe35d76cb81e0f2228c87bf55de0ebb940833f725af"
+    },
+    {
+      "path": "docs/implementation_plan.md",
+      "bytes": 2189,
+      "mode": "100644",
+      "sha256": "5e15fb9a96d54dfa68569ddc11880044857e22533f7b8a9877f991ffbe8244fc"
+    },
+    {
+      "path": "docs/mjlab_visual_components.md",
+      "bytes": 3075,
+      "mode": "100644",
+      "sha256": "8e442c1df359b01bef04a77ac1b10f5067c3d899fbe5cc0a35c4f2df4560f96c"
+    },
+    {
+      "path": "docs/pie_method.md",
+      "bytes": 9360,
+      "mode": "100644",
+      "sha256": "4fc3569572e2ec5c5d2243aa75d3b69794219babcad27d80d52bfde7c3f88334"
+    },
+    {
+      "path": "docs/rsl_rl_v1_pie_migration.md",
+      "bytes": 2475,
+      "mode": "100644",
+      "sha256": "dd244f06bbb8bfbf3127ef6be947b7b8fb0e10c9a34bce95e47be0839a12ecd5"
+    },
+    {
+      "path": "docs/validation.md",
+      "bytes": 4246,
+      "mode": "100644",
+      "sha256": "600291b590b7b8f783719fcf541cc770392a595b571c345b854b28c5d8cfcc1e"
+    },
+    {
+      "path": "docs/validation_results.json",
+      "bytes": 4105,
+      "mode": "100644",
+      "sha256": "62a9e4ea52cd20c6d8ac9207c077dc69b343f65e17662353c52e9df01fd55493"
+    },
+    {
+      "path": "environment.pie.yml",
+      "bytes": 308,
+      "mode": "100644",
+      "sha256": "98635eed17fec0a7aa3b2385fcb4ec02041559b9603820cb0e6b084d6d2f91cd"
+    },
+    {
+      "path": "scripts/check_pie_backend.py",
+      "bytes": 2648,
+      "mode": "100644",
+      "sha256": "1b6303140032776ced0c12ba7cf085af618ffcd21104f60132560f47d68c859c"
+    },
+    {
+      "path": "scripts/csv_to_npz.py",
+      "bytes": 13111,
+      "mode": "100644",
+      "sha256": "70211c5eca45e19524256ba912e325ca8f80153696fa6cc0864dfbc05cc574ff"
+    },
+    {
+      "path": "scripts/list_envs.py",
+      "bytes": 1052,
+      "mode": "100644",
+      "sha256": "a192c306375fd0587b6350044f5ea283b09299d9843552c97ffea206d82821d7"
+    },
+    {
+      "path": "scripts/play.py",
+      "bytes": 8141,
+      "mode": "100644",
+      "sha256": "013e27b1f073dc2e7996c7daa80b6482c4262c15e548f9a14440fb017e23d3ca"
+    },
+    {
+      "path": "scripts/train.py",
+      "bytes": 8077,
+      "mode": "100644",
+      "sha256": "452f6aba2563c6c3efc9efb1f51ac31cd003134d055381ab1ce92dd35bfc15ca"
+    },
+    {
+      "path": "scripts/visualize_terrain.py",
+      "bytes": 16012,
+      "mode": "100644",
+      "sha256": "6293e39f4d6873d33f97f83f8e2b10f3a037ce3bd87322a3e71fe50c54b4a7b8"
+    },
+    {
+      "path": "setup.py",
+      "bytes": 465,
+      "mode": "100755",
+      "sha256": "07f39e8400785a11969d1fb13b4b5326792abc082fcca1d4d149b87bb221f31e"
+    },
+    {
+      "path": "simulate/CMakeLists.txt",
+      "bytes": 996,
+      "mode": "100644",
+      "sha256": "3dc47b6fabf9db063f6eb188c371347cfd73c09925deef3838a7d62eb331d75e"
+    },
+    {
+      "path": "simulate/config.yaml",
+      "bytes": 859,
+      "mode": "100644",
+      "sha256": "ff8f60b2342ecf6e99eed335aae8648331ed1259ccf6cd6721edb88efbd16ecf"
+    },
+    {
+      "path": "simulate/mujoco/THIRD_PARTY_NOTICES",
+      "bytes": 29917,
+      "mode": "100644",
+      "sha256": "0b346dcd0b1c41cb0cfd770dde8843d1cefba3a52f9b158497c71ee2fb2aed6e"
+    },
+    {
+      "path": "simulate/mujoco/bin/basic",
+      "bytes": 396816,
+      "mode": "100755",
+      "sha256": "db326765794708fae6902f0a7b3a475927716de42638caf97cb62b2224b6fb40"
+    },
+    {
+      "path": "simulate/mujoco/bin/compile",
+      "bytes": 643208,
+      "mode": "100755",
+      "sha256": "2621d050bbffefac824806536d726febdb68d07503e0dd1388eeb984de90273f"
+    },
+    {
+      "path": "simulate/mujoco/bin/record",
+      "bytes": 698456,
+      "mode": "100755",
+      "sha256": "058b684392db5f76c0a886a2926adc42b61a8657198b95e2cc48dd734eb1605c"
+    },
+    {
+      "path": "simulate/mujoco/bin/simulate",
+      "bytes": 1290200,
+      "mode": "100755",
+      "sha256": "62243079e69cd9f841dabcaf30eacce855310f0bd478b76ca328a1cf30458645"
+    },
+    {
+      "path": "simulate/mujoco/bin/testspeed",
+      "bytes": 348976,
+      "mode": "100755",
+      "sha256": "81022a331d9fe7aa1d2c25d050cd4ccab6b4c6475ee1421beeee52f30e0a8be0"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/layer_sink.h",
+      "bytes": 1287,
+      "mode": "100644",
+      "sha256": "54cb7867020879f83cc863356db02cc529420ae5e33faa6a83ecf14f6884f7d6"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/actuator.h",
+      "bytes": 39211,
+      "mode": "100644",
+      "sha256": "b8d9ae2b777200ca64637bd6e21c813f6f48ff98cfbbd85303bac6d73f23b84b"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/api.h",
+      "bytes": 1381,
+      "mode": "100644",
+      "sha256": "7bb948dcdca65f52f401cd3f549afe1bd029d68f294ffd6ee5117160c8217ae8"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/collisionAPI.h",
+      "bytes": 15659,
+      "mode": "100644",
+      "sha256": "a3dba12096419a72016d7825623bf20f190e466bfcb2772ae2500e82c2e1ea13"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/imageableAPI.h",
+      "bytes": 6791,
+      "mode": "100644",
+      "sha256": "7c110e6c627f0055d0a66e92d5b342e42c93c822bbebcc188070875c00f75ff5"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/jointAPI.h",
+      "bytes": 28690,
+      "mode": "100644",
+      "sha256": "696c7d78aea544d00be4bd03adec96e09edcfe5ff911c2b67dfb6de25ded7a3f"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/keyframe.h",
+      "bytes": 11535,
+      "mode": "100644",
+      "sha256": "6bf1275de5f8c3cf030bc4386e82a06402fc106b11309de818eafac1ae68380f"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/materialAPI.h",
+      "bytes": 7895,
+      "mode": "100644",
+      "sha256": "c69920663849ef0e5fb744e351f6f5d6c5d5ae21b16501ddeec4a7d13371fceb"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/meshCollisionAPI.h",
+      "bytes": 8384,
+      "mode": "100644",
+      "sha256": "6dd8b7015303e8b380c34ae806e3b0983ef0e6d70786924bca1e1589e3f46dbb"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/sceneAPI.h",
+      "bytes": 78612,
+      "mode": "100644",
+      "sha256": "ac674431919d4b364bc8fc19331ce174e2a354151ba6800a837c6263aa68e7e7"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/siteAPI.h",
+      "bytes": 6632,
+      "mode": "100644",
+      "sha256": "38d55d8742f6a312fad63f8a1286c99b52b6e2034ae70a512810f9f0786d01a8"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/mjcPhysics/tokens.h",
+      "bytes": 21185,
+      "mode": "100644",
+      "sha256": "0efc833e3c1c83ad401cc0d48e8d43d351d9b7aa7343442f3862c44aa15d2ca7"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/usd.h",
+      "bytes": 1762,
+      "mode": "100644",
+      "sha256": "267fc07e8e436ae4d68b3f5ec16df76105e0de2ecb411be33f128af074c3b20c"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/utils.h",
+      "bytes": 1264,
+      "mode": "100644",
+      "sha256": "16034a981bc9db1075423bf55fe45a1a791631dea358b29db7c130b82eb9fc4e"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/experimental/usd/writer.h",
+      "bytes": 1529,
+      "mode": "100644",
+      "sha256": "e29951b546acbe8cddec3af5328bbc9aec9d20b1097b30a115f85481134b0e13"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjdata.h",
+      "bytes": 27364,
+      "mode": "100644",
+      "sha256": "7ea8b0342f379a351ffd7c8380f891f258e939e67be668f46ec74e02e951d78d"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjexport.h",
+      "bytes": 1533,
+      "mode": "100644",
+      "sha256": "2d0ec44615ce9e0dd3d80ce9ca2a8bcad1906840d2ab6b5a9af785f7be989f8b"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjmacro.h",
+      "bytes": 1336,
+      "mode": "100644",
+      "sha256": "067e74ccb1a17c3ca555d46cbae5cd86778220e5238706e40ea9bc7139cb7012"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjmodel.h",
+      "bytes": 76369,
+      "mode": "100644",
+      "sha256": "a03572fab4a70e55b957c79cee4fbee02afa0aa91235925d5d7eb488c23b9aba"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjplugin.h",
+      "bytes": 7676,
+      "mode": "100644",
+      "sha256": "65d5e3cb193736a3ec0f834e6864a083e2c39e61b193cb82cdc245e361e9a58e"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjrender.h",
+      "bytes": 8058,
+      "mode": "100644",
+      "sha256": "497b9bd11971be5e79d68110b87d775787cf37a33aec51c11df47fea936999d8"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjsan.h",
+      "bytes": 2211,
+      "mode": "100644",
+      "sha256": "42389c4d645fe6f4c5d1195d72556f1238c126f979d05e56d86772949dc6b818"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjspec.h",
+      "bytes": 33879,
+      "mode": "100644",
+      "sha256": "88a1d70360d30140b8e6b15d3143b75d869ec3c9fd7abfde2406b2620d905112"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjthread.h",
+      "bytes": 1543,
+      "mode": "100644",
+      "sha256": "f6bf0b51ed63049f0e6a04b19e97b76d36b261d27344a23c11b532640e94f0d7"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjtnum.h",
+      "bytes": 1382,
+      "mode": "100644",
+      "sha256": "85a6f45f592172df40d153267cb8d79357b1fa084e3f37fbffe14aee8283f154"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjui.h",
+      "bytes": 14360,
+      "mode": "100644",
+      "sha256": "74d8d97ce4777646f41589d870c754ed6e05cd6ac2350f2be1435c8405ed8ada"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjvisualize.h",
+      "bytes": 19184,
+      "mode": "100644",
+      "sha256": "d9e994fa039e19c9249018dd67a5af4c4ccca67c08f2318c3fd46c411cbf704f"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mjxmacro.h",
+      "bytes": 57110,
+      "mode": "100644",
+      "sha256": "6027d223e214c76e09b7ded09bf4106c71d5557975bc19af36ded3eb253ba2a8"
+    },
+    {
+      "path": "simulate/mujoco/include/mujoco/mujoco.h",
+      "bytes": 75768,
+      "mode": "100644",
+      "sha256": "3190fd17711cf25b6b7605802df353571e4329ca3849485e56643e49925208cd"
+    },
+    {
+      "path": "simulate/mujoco/model/adhesion/README.md",
+      "bytes": 287,
+      "mode": "100644",
+      "sha256": "7ec0453fb6634122a6511a0330310a17df2a5a847f8dca4463829c4f5ae38991"
+    },
+    {
+      "path": "simulate/mujoco/model/adhesion/active_adhesion.xml",
+      "bytes": 5655,
+      "mode": "100644",
+      "sha256": "7d491397d1ec470f847a68ff9b7321420407ec2f7539663da88db2fae26abf47"
+    },
+    {
+      "path": "simulate/mujoco/model/balloons/balloons.xml",
+      "bytes": 3706,
+      "mode": "100644",
+      "sha256": "686e1e72c8eb219d70b08dc154808ad9495a83d79a5921d982613773705d0b17"
+    },
+    {
+      "path": "simulate/mujoco/model/car/car.xml",
+      "bytes": 2304,
+      "mode": "100644",
+      "sha256": "fc506521837557f6c6c65c624294241315ac59a1a0679ebfaa0253755a3db13f"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/10_of_clubs.png",
+      "bytes": 130453,
+      "mode": "100644",
+      "sha256": "8151a80b0ab9be48610c777566202e512c87a08969535c7c328a2f0def49fc39"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/10_of_diamonds.png",
+      "bytes": 127510,
+      "mode": "100644",
+      "sha256": "b32951d2eea17f4b02bdfb9221aaaa30cafe707749d133f7fecdf971fd240140"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/10_of_hearts.png",
+      "bytes": 128173,
+      "mode": "100644",
+      "sha256": "662e33d265b6d7b9f92923e6f632ff7201d619a5c32c574fde8c97747854e65f"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/10_of_spades.png",
+      "bytes": 128524,
+      "mode": "100644",
+      "sha256": "15da0c7ca41ff9614402bdbbdb5984ccc7a34a1fd1a917786ae886cef0bd30a5"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/2_of_clubs.png",
+      "bytes": 114526,
+      "mode": "100644",
+      "sha256": "dca16bc0332b374b9f12f8e863c6e6405a3a023f6bd7485278cf211d754c13e5"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/2_of_diamonds.png",
+      "bytes": 113246,
+      "mode": "100644",
+      "sha256": "db91113c3f4df53521353b228f7a53409e045b7d3ee73c1861cec3be22f7a290"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/2_of_hearts.png",
+      "bytes": 113735,
+      "mode": "100644",
+      "sha256": "ff423133f83f78249144d501e4f7dc7b1a63e352b6564c7d25d699178d31a099"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/2_of_spades.png",
+      "bytes": 113792,
+      "mode": "100644",
+      "sha256": "e310b51137b7c5953ce401ba49272d8ecd2b18b439e3b7d837121a3ca77615cb"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/3_of_clubs.png",
+      "bytes": 116853,
+      "mode": "100644",
+      "sha256": "c9331f5e8daf0e8b7387421b640d742051cd861c1a36c8dafbbabb7b29429f22"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/3_of_diamonds.png",
+      "bytes": 115250,
+      "mode": "100644",
+      "sha256": "6d431260bd6342b3db720c8cc9d9f504ff12ad79fb35699bef37c8b5b0282c3b"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/3_of_hearts.png",
+      "bytes": 115677,
+      "mode": "100644",
+      "sha256": "9f6f961164f7fdde6dca3bcb549e9816b3c9b6954d2e1480cf55353dd082faf9"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/3_of_spades.png",
+      "bytes": 116158,
+      "mode": "100644",
+      "sha256": "3f8893e8a96714cefc2c3401c9f32dc71a4970c0afb6dcb2deb7dcceeb1ef225"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/4_of_clubs.png",
+      "bytes": 117916,
+      "mode": "100644",
+      "sha256": "a274c16a53bc31ef3e42175cdf3ade79dd7cf2d72334a42d9218e0ec48b1422a"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/4_of_diamonds.png",
+      "bytes": 116166,
+      "mode": "100644",
+      "sha256": "69e96d1722a4484650936078fdfdb8b83f654bc70418fcb87e82f49523e82c82"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/4_of_hearts.png",
+      "bytes": 116921,
+      "mode": "100644",
+      "sha256": "66f0b4a8a00ecd53df066d541780ba500a01a7304fa4334cfe0375a324fcb780"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/4_of_spades.png",
+      "bytes": 117133,
+      "mode": "100644",
+      "sha256": "256955c6143d1bdd5cdc51bd99acb2fb1735188ba5c915d887e8cbb1e0ac3964"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/5_of_clubs.png",
+      "bytes": 120421,
+      "mode": "100644",
+      "sha256": "6085f488e4a76700b59609eff3cf0f566f8fde1201fb73222db2e589b0512fef"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/5_of_diamonds.png",
+      "bytes": 118359,
+      "mode": "100644",
+      "sha256": "d062b5a6e7c8bbf63d17823fe52e64aa84e476ed62227db80d4cccd2ef2d38dd"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/5_of_hearts.png",
+      "bytes": 119153,
+      "mode": "100644",
+      "sha256": "acbe55d8a2e9981be9c732edf481a9d87affcb332589f7f0dc9841dcebff86b9"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/5_of_spades.png",
+      "bytes": 119248,
+      "mode": "100644",
+      "sha256": "8fc5482ac02ef73db560f01335fb2b0edf53afa17987c3f5cc08eae635f3f98f"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/6_of_clubs.png",
+      "bytes": 122349,
+      "mode": "100644",
+      "sha256": "4913572681474ed56f2821a8029dcd3354877cd4d7297f1c1ff6db8b34e88045"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/6_of_diamonds.png",
+      "bytes": 120348,
+      "mode": "100644",
+      "sha256": "27489e8038d5eb2714e4a846ad54dda1a6c514c977a636fc950fa9383337eb43"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/6_of_hearts.png",
+      "bytes": 120721,
+      "mode": "100644",
+      "sha256": "a6bc33a52ff70b00d9d2a651992701d0c67a10a77921cd3921fc650c76dc22b7"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/6_of_spades.png",
+      "bytes": 121341,
+      "mode": "100644",
+      "sha256": "4e126bd0f239bf6e6ecbbae0ad67cbe19008f33447b753b3e19b38898f83f6e7"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/7_of_clubs.png",
+      "bytes": 122954,
+      "mode": "100644",
+      "sha256": "6af0d5e1746c3df58dd52bcdb74bece5f25173e7e12df2436d1779e1b73603f5"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/7_of_diamonds.png",
+      "bytes": 120803,
+      "mode": "100644",
+      "sha256": "37cc595e9fd99dc655278664a573bd442f318e16b0852346a2271a50b6a7eba4"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/7_of_hearts.png",
+      "bytes": 121192,
+      "mode": "100644",
+      "sha256": "fe3056b0a630c26d84ab6c0db95420e5d3ee49e91fef6a01d365771d63765674"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/7_of_spades.png",
+      "bytes": 121963,
+      "mode": "100644",
+      "sha256": "76fefad9a8cb256f6168943ff2e54e8e18ce77d61f01cf5361ade1326e24e660"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/8_of_clubs.png",
+      "bytes": 125957,
+      "mode": "100644",
+      "sha256": "5128371acd9c0f754d86ce8afd9dc6274aee5dbda3f92f827dcc3a365f21c8b8"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/8_of_diamonds.png",
+      "bytes": 123717,
+      "mode": "100644",
+      "sha256": "edc597c60c1304b3ecbb0748041fd3194cb667aeaeee84837b40aae82bdef30a"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/8_of_hearts.png",
+      "bytes": 124067,
+      "mode": "100644",
+      "sha256": "f8bf8deb7e3f80d4fac4ccca8faee4c88356f8ba18679c150b64449bfbfaa038"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/8_of_spades.png",
+      "bytes": 124876,
+      "mode": "100644",
+      "sha256": "0383c9aceec79666d058726d3cc5795a460f203ca68d5512b85701d6ad6b8e3c"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/9_of_clubs.png",
+      "bytes": 127806,
+      "mode": "100644",
+      "sha256": "16c8d42dc7d0660905c4ad9bf03c36d1e33e03f6deb6a6ef3160c39e28e6374c"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/9_of_diamonds.png",
+      "bytes": 125052,
+      "mode": "100644",
+      "sha256": "4c93ce3180a6a0c9be10654e625bdd2aa97234fa8360e22fc00400e3c163cbe7"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/9_of_hearts.png",
+      "bytes": 125806,
+      "mode": "100644",
+      "sha256": "f386eb9f5c55b59fd0362dd86c4befaef0f5f5b211fd3933eb1dbb314ac46b77"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/9_of_spades.png",
+      "bytes": 126133,
+      "mode": "100644",
+      "sha256": "4be017152a3c8ced0d7bc2fe370232c32a55cd56ebafd3a7c407bd51347ea69f"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/ace_of_clubs.png",
+      "bytes": 124412,
+      "mode": "100644",
+      "sha256": "5aa415041738efb92bd3b46c88f3df40a7fd6202ec35be057ec93a0a1a8ac7c5"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/ace_of_diamonds.png",
+      "bytes": 121615,
+      "mode": "100644",
+      "sha256": "ecbd2083ffcfcc399dead65c91a4d0fde72c92265505b6dd75228c21138d7b2e"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/ace_of_hearts.png",
+      "bytes": 125653,
+      "mode": "100644",
+      "sha256": "72753d43f56785c61755dff9915242648edd3483b06b147baaa0f44d83752771"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/ace_of_spades.png",
+      "bytes": 130054,
+      "mode": "100644",
+      "sha256": "2fb87d38360f344b09034d39c9a044e35600361ee2d8621f6ee44099b9118fdf"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/black_joker.png",
+      "bytes": 123376,
+      "mode": "100644",
+      "sha256": "52631d1e97f28bfe2c2b45058e9e8685591045cf25462ba2deb7097fec1f4ee2"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/card.obj",
+      "bytes": 5820,
+      "mode": "100644",
+      "sha256": "3be72c1c6b6caf2f5b4888be01caae89161ce2c290b718cfe192f3487866668b"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/jack_of_clubs.png",
+      "bytes": 198951,
+      "mode": "100644",
+      "sha256": "ccd3dbf13fcdebee422563238756ad9b3d290247b8041ad59222ebf21427d845"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/jack_of_diamonds.png",
+      "bytes": 202555,
+      "mode": "100644",
+      "sha256": "7d4b19741afb1b4f934e2b95bd8cd4cdc6b00bd760bb8f6f98d1ee5566b94148"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/jack_of_hearts.png",
+      "bytes": 207472,
+      "mode": "100644",
+      "sha256": "2baa12b28c533328e49ed09afab58483ed0c504afecad2305a399b18277c8f9c"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/jack_of_spades.png",
+      "bytes": 201293,
+      "mode": "100644",
+      "sha256": "c39a9f68e87598baaa2a62ec6b37980a44250756e084483913793a469a573b04"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/king_of_clubs.png",
+      "bytes": 203142,
+      "mode": "100644",
+      "sha256": "96ce1860633de60f45bf1f0f26b50699d8780a76b1abbb0e3e74f74a4a477f92"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/king_of_diamonds.png",
+      "bytes": 206638,
+      "mode": "100644",
+      "sha256": "02ae7fdc74873bd1c64e71f4ccc691bc74b6c598c25a457ec17dc3337fb01325"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/king_of_hearts.png",
+      "bytes": 210658,
+      "mode": "100644",
+      "sha256": "7cb2573318ad842caba0e70331b5ab66c95f1802f90536f322ac58c25abb5322"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/king_of_spades.png",
+      "bytes": 195662,
+      "mode": "100644",
+      "sha256": "19f9aa28ae110589c447c7e519e8d6890b81b64573a86dbad40432cae5a7c296"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/queen_of_clubs.png",
+      "bytes": 208887,
+      "mode": "100644",
+      "sha256": "a433e5e8bc41a5bb42aa9d9a858378a9bbf32b2e7a83190736754d4811737305"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/queen_of_diamonds.png",
+      "bytes": 194143,
+      "mode": "100644",
+      "sha256": "aa3ec406722c62f79505874d6bccd274db434fac0d04f4cf032fab3a85bf9527"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/queen_of_hearts.png",
+      "bytes": 202291,
+      "mode": "100644",
+      "sha256": "cc716e53468bc08f098ed5bf1c9316166b5d9af5d8f5973c335318d6c385d281"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/queen_of_spades.png",
+      "bytes": 196916,
+      "mode": "100644",
+      "sha256": "541a9a3f55c55275d222968e8683be9eb7dfd6f25e05d1ca8feaa962df890698"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/assets/red_joker.png",
+      "bytes": 124196,
+      "mode": "100644",
+      "sha256": "5579125c365c6c552af504c7653f7bb9ae75cd49aab0541fd22dbe5be999daac"
+    },
+    {
+      "path": "simulate/mujoco/model/cards/cards.xml",
+      "bytes": 16215,
+      "mode": "100644",
+      "sha256": "5b5838c1c2c7fee8685441351b2503d6c7d265e6c46c3515a3a9aa3c330d88f0"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/README.md",
+      "bytes": 349,
+      "mode": "100644",
+      "sha256": "d500eb278b0926a7eb0bc8076fc6739274d2e0ec2a900ec6996c40d9656629c6"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue.png",
+      "bytes": 3094,
+      "mode": "100644",
+      "sha256": "541833892441d2fbdb997760605027cc8a8faba38262e6f882df45210cce805f"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_orange.png",
+      "bytes": 3362,
+      "mode": "100644",
+      "sha256": "1c7d54f25e996aedc826aad993f082696e87fc25177e84275f546619969ed0b4"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_orange_white.png",
+      "bytes": 3607,
+      "mode": "100644",
+      "sha256": "8fda67c9f00c9c50b39f343f23b1dd0b7914ebea931ced0179926aef24c158cd"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_orange_yellow.png",
+      "bytes": 3622,
+      "mode": "100644",
+      "sha256": "d6dd998e2574831407eeb26ed0b7bad14c41173f87d2519bca3320f0ecf69260"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_red.png",
+      "bytes": 3365,
+      "mode": "100644",
+      "sha256": "591a1d94fbaffda3ff9d7b449ef395bb36ccb35f4454b5180c92d77b74dfc12c"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_red_white.png",
+      "bytes": 3612,
+      "mode": "100644",
+      "sha256": "f2710c71c3a15b6d60f4ec219926598ff69821a06efd58e323d4957c08e7d821"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_red_yellow.png",
+      "bytes": 3627,
+      "mode": "100644",
+      "sha256": "97233bd01764e13c2524e14ca0d9ac0476a04c95de504562295e3f19b84b2129"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_white.png",
+      "bytes": 3356,
+      "mode": "100644",
+      "sha256": "a3eccfe473fc9e10f5237551d86d2c47f50d8a9d244b6e8303859747681f9ce1"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/blue_yellow.png",
+      "bytes": 3364,
+      "mode": "100644",
+      "sha256": "8c3f04eea24e23e202fdd095f86229ff9d2ad83f0c2a190f09de158126c9552c"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green.png",
+      "bytes": 3094,
+      "mode": "100644",
+      "sha256": "acaf8320f14957232e901b32f0a2f76600a4792face369b9dd231dd008ba472b"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_orange.png",
+      "bytes": 3364,
+      "mode": "100644",
+      "sha256": "518a65d44fb31467b71ff18851e9c7d5a6409005422d10e60297071c54647f0e"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_orange_white.png",
+      "bytes": 3609,
+      "mode": "100644",
+      "sha256": "95331a0f1ad11fda7d24b418d14b4a0aa505eb481210a931e360f1de8f4b4522"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_orange_yellow.png",
+      "bytes": 3625,
+      "mode": "100644",
+      "sha256": "151cdf326fabcaad8ffffab96a3ece71416771f390a04856bc99594b4b4b08d5"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_red.png",
+      "bytes": 3366,
+      "mode": "100644",
+      "sha256": "044ca673dad5395423f5003e4a7ddddb491a895660db58d7f95e792cb0b99de2"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_red_white.png",
+      "bytes": 3612,
+      "mode": "100644",
+      "sha256": "d906f5c0330e67ef7fc500cb60c9752987943382fd2f87c3596553db874791e9"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_red_yellow.png",
+      "bytes": 3628,
+      "mode": "100644",
+      "sha256": "11e541479ac5455dd17580524cb1f45de588805097ceda9e571c5cb46610a8f4"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_white.png",
+      "bytes": 3357,
+      "mode": "100644",
+      "sha256": "7c5ffc2c4b98a510beaf4d3664c231c3a86bf19014b71bee57f38b770c0ec06b"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/green_yellow.png",
+      "bytes": 3365,
+      "mode": "100644",
+      "sha256": "eb473fd97bb3dca436256d0a9d9efec429882566fa5302b9c261bed9ecf91c4a"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/orange.png",
+      "bytes": 3091,
+      "mode": "100644",
+      "sha256": "5e3254685a48034c6e5b3e3506c3e883721e40c27c7b9cb1f0c87153ca618d04"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/orange_red.png",
+      "bytes": 3363,
+      "mode": "100644",
+      "sha256": "6cfcd0cb96c4471fc4db963e48c679a3b2d7ffc6b39754a7d9c6bea75dd62e9b"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/orange_white.png",
+      "bytes": 3352,
+      "mode": "100644",
+      "sha256": "e40d28900207f1a5de0c78a0d2bfbacfc0fecbf65d3b0a960b49fb4f85397b3b"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/orange_yellow.png",
+      "bytes": 3360,
+      "mode": "100644",
+      "sha256": "9dddaaecf9c3e954a7ede6f7fe0c3ff97e18014ef7cb5b6add6735875cfc3aa4"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/red.png",
+      "bytes": 3093,
+      "mode": "100644",
+      "sha256": "51a8ebff0db6ddc9cb3ce370c83d603600fbc82a54805ee169bc44b92174f61c"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/red_white.png",
+      "bytes": 3355,
+      "mode": "100644",
+      "sha256": "d95e3f73bfeb2ea74fc35d7ad9e5b7b26b7d361ce3c6ea9f1149c3eda4f3f277"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/red_yellow.png",
+      "bytes": 3363,
+      "mode": "100644",
+      "sha256": "01d04f5b3cd4152b1b9424115355d556f8f3698b00ee1dceb6715d982511e948"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/white.png",
+      "bytes": 3085,
+      "mode": "100644",
+      "sha256": "b64452dde421e006b8f1ee87b183b434da92f0cd78186d40b682b28c04b4d471"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/assets/yellow.png",
+      "bytes": 3093,
+      "mode": "100644",
+      "sha256": "ee68ee0295c1ba0d4c3eb08353b01bb07ba0afdb017be4bb32e621cb500be7eb"
+    },
+    {
+      "path": "simulate/mujoco/model/cube/cube_3x3x3.xml",
+      "bytes": 9593,
+      "mode": "100644",
+      "sha256": "a11b6a464e36d68e1a2f4d3fd0e881a1fa6d2c6232ea0a09e2af3c768e86e5ab"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/asset/bunny.obj",
+      "bytes": 198443,
+      "mode": "100644",
+      "sha256": "c93e4a6fc6423194ff8b24de372d0a0632264290302a11d391f832313a0d55ef"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/asset/bunny_with_uv.obj",
+      "bytes": 447905,
+      "mode": "100644",
+      "sha256": "0fefcd6a43df567237ecce5338b9cb824f8a94cda8389028e3e70c6ada6cad28"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/asset/cap.obj",
+      "bytes": 12869,
+      "mode": "100644",
+      "sha256": "c7f3e061066c461052cad4794a2af4546136c14bce0a0f4b7caf2c0a035f942a"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/asset/sponge.png",
+      "bytes": 649548,
+      "mode": "100644",
+      "sha256": "451f855a98d005932be2ada10c9b7946d4236212e0ece47bfccfc2fdfdc03d57"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/basket.xml",
+      "bytes": 1627,
+      "mode": "100644",
+      "sha256": "9c09d29f6796b205fff667f5df1648039109cc45621a15d4ab352449fbd2496b"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/bunny.xml",
+      "bytes": 1465,
+      "mode": "100644",
+      "sha256": "72b4d1617097e30c9f743cc87fd948e7da954c83242cbe5842e8843d1b944ed0"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/bunny_with_uv.xml",
+      "bytes": 1628,
+      "mode": "100644",
+      "sha256": "8a4c01da1f5d61acd1742ba81240f88b750b0dc6e95e91c831f94ca94b6608d6"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/flag.xml",
+      "bytes": 1602,
+      "mode": "100644",
+      "sha256": "345dc4854b86bfe878c8d1af2c8b431b1609ddffd2c166c2a172055b0760bae8"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/floppy.xml",
+      "bytes": 1485,
+      "mode": "100644",
+      "sha256": "c5db9eae227e58e1fced79dd29bceaa2ef4da2659b058ca2a14d8cc149d93cf6"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/gripper.xml",
+      "bytes": 2948,
+      "mode": "100644",
+      "sha256": "5f6da01e10d79c75348ce4ba6cf6a976df6d61b59e11ed2433c4550523f8dee1"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/gripper_trilinear.xml",
+      "bytes": 2690,
+      "mode": "100644",
+      "sha256": "bbb1c28c4870b20fa6119f895d433794749490be5b8f96df3c6a245905ac7122"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/jelly.xml",
+      "bytes": 1648,
+      "mode": "100644",
+      "sha256": "de1bb207b84dc0efa6bd51b2dd77ff7a632ffe2ce0571f3ca1d34ffd038fc6ee"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/mannequin.xml",
+      "bytes": 6855,
+      "mode": "100644",
+      "sha256": "8f6c82eb1e55e86423eb30fe57a8ed3a983fe223d22ab8b34223270d6576187b"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/pancake.xml",
+      "bytes": 1327,
+      "mode": "100644",
+      "sha256": "4bffcee93ed951b792db8c73ff87afa6f2b7b4446a286f51dc23dd09f9ce706a"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/plate.xml",
+      "bytes": 1428,
+      "mode": "100644",
+      "sha256": "f4686d27ac0b20f9f181262cf638c6f3b4de64030e6a1239dba8c509aa2d8519"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/poncho.xml",
+      "bytes": 48048,
+      "mode": "100644",
+      "sha256": "5bc852bbf64e9b94bae1a10abce95de78101ea6a3ac6adac58c6db4d1e4fb805"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/poncho_vertcollide.xml",
+      "bytes": 48096,
+      "mode": "100644",
+      "sha256": "f4bfe681e561bbcce0ad2cd8b66255a8afae6b3173182976fe2ecea996083ddc"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/press.xml",
+      "bytes": 2067,
+      "mode": "100644",
+      "sha256": "cf1b707bbc93840418bbd0dc5a48de5dc7068e0b8bffe701deec15107d4e23dd"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/pulley.xml",
+      "bytes": 2102,
+      "mode": "100644",
+      "sha256": "1faaf6be04c9adb8c51494861b8fed57ccb84d10733346e30f1e7105528c064a"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/scene.xml",
+      "bytes": 1637,
+      "mode": "100644",
+      "sha256": "8b5e37baf8c50c0496858fe0d552bdfebd51b6ee934f1ee3875e917c936434ec"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/softbox.xml",
+      "bytes": 1321,
+      "mode": "100644",
+      "sha256": "98371585fed33668c11a7abe173f54008f036c518047264e21b22344f4c87e23"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/sphere_full.xml",
+      "bytes": 1267,
+      "mode": "100644",
+      "sha256": "7c0deb69111da305961146f6a25ef1cc52d21332e82d869c1992297db4e436b2"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/sphere_passive.xml",
+      "bytes": 1282,
+      "mode": "100644",
+      "sha256": "7a896bdde85057af7c05ee3d433aa825e61d93bf071ec3a14d128812c09d9605"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/sphere_radial.xml",
+      "bytes": 1517,
+      "mode": "100644",
+      "sha256": "599a0aef43d4c658cc1ac7f90461853f36a09bda80d614776cb91091ce2bd4be"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/sphere_trilinear.xml",
+      "bytes": 1908,
+      "mode": "100644",
+      "sha256": "ef3ba7ceb9b45f174f58d6d986dd0a77083cde3dbbc744a26d9f6c23e4bcefb0"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/trampoline.xml",
+      "bytes": 1462,
+      "mode": "100644",
+      "sha256": "df1ca26d2ffd3d24be64b3c9f3c619706c33972b0dd2a7a929b56ef91955174b"
+    },
+    {
+      "path": "simulate/mujoco/model/flex/trilinear.xml",
+      "bytes": 1354,
+      "mode": "100644",
+      "sha256": "731d8ba32069f29ca5cb6013acd1cb0a7b03706dd887b1a9a1295fe4a664ec1d"
+    },
+    {
+      "path": "simulate/mujoco/model/hammock/hammock.xml",
+      "bytes": 2543,
+      "mode": "100644",
+      "sha256": "dd039b5f7d3e83dbb773ea7e193bbb9943ea3b4eace0b93af88f1806d5e66744"
+    },
+    {
+      "path": "simulate/mujoco/model/humanoid/100_humanoids.xml",
+      "bytes": 1908,
+      "mode": "100644",
+      "sha256": "978c3611ac90cc3ca1edf7bab68f2316d1d40faebf24201e9cd44b62565db06e"
+    },
+    {
+      "path": "simulate/mujoco/model/humanoid/22_humanoids.xml",
+      "bytes": 1899,
+      "mode": "100644",
+      "sha256": "21e9c4f8e327e88999b4d33c6a52acf83f232ae0cd740bf6f91e89c601925ed3"
+    },
+    {
+      "path": "simulate/mujoco/model/humanoid/README.md",
+      "bytes": 1299,
+      "mode": "100644",
+      "sha256": "f2b5a42b306056a0ff07ff5a1c8ff512236e7b4fb5046da162b53cb66d85f17a"
+    },
+    {
+      "path": "simulate/mujoco/model/humanoid/humanoid.png",
+      "bytes": 397686,
+      "mode": "100644",
+      "sha256": "7df114887f1b573b56e9876e3979a832218c08798ee245f58bf79ec5a4c8c763"
+    },
+    {
+      "path": "simulate/mujoco/model/humanoid/humanoid.xml",
+      "bytes": 11287,
+      "mode": "100644",
+      "sha256": "acc9167550bf20580717a551467e6e8d0d03d1916d24bbe4b734ce11afb99406"
+    },
+    {
+      "path": "simulate/mujoco/model/humanoid/humanoid100.xml",
+      "bytes": 5217,
+      "mode": "100644",
+      "sha256": "e2d5f0e5cca7747f7924e107c9e971a6e5374f0686f0b0134046f4bebe620e24"
+    },
+    {
+      "path": "simulate/mujoco/model/mug/mug.obj",
+      "bytes": 2197848,
+      "mode": "100644",
+      "sha256": "656bfc987a038c90417ec98c671ab481e6a3ebe35a17d3b92e2ec0ee9593eb19"
+    },
+    {
+      "path": "simulate/mujoco/model/mug/mug.png",
+      "bytes": 37551,
+      "mode": "100644",
+      "sha256": "8bee0ad778cda4459b486a3fe97d49196d3583abf041020eb1a54ef840e95318"
+    },
+    {
+      "path": "simulate/mujoco/model/mug/mug.xml",
+      "bytes": 3505,
+      "mode": "100644",
+      "sha256": "5054f320f880cfb828c879ab55fd1648844d3fedda49fc47577e905e6baaa8a6"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/actuator/pid.xml",
+      "bytes": 2154,
+      "mode": "100644",
+      "sha256": "8efed7758cac2be6b091416153a4d3380ac305232b1d84953dd264f4eff5f4cb"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/elasticity/belt.xml",
+      "bytes": 2109,
+      "mode": "100644",
+      "sha256": "1e1ccac7e8560afe662ccb983ff5437b5c4a7300f92b5a8fcf37cbc1989f0b86"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/elasticity/cable.xml",
+      "bytes": 1803,
+      "mode": "100644",
+      "sha256": "7253fbe844e15fa6956936fd87cf1413cc192c0ea8ca5188962f0237b7867d99"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/elasticity/coil.xml",
+      "bytes": 3779,
+      "mode": "100644",
+      "sha256": "f5fe91fb500117cec2543f12c6f138884eef11d28ae1229b623c7697d69e250e"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/elasticity/scene.xml",
+      "bytes": 1637,
+      "mode": "100644",
+      "sha256": "8b5e37baf8c50c0496858fe0d552bdfebd51b6ee934f1ee3875e917c936434ec"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/asset/README.md",
+      "bytes": 179,
+      "mode": "100644",
+      "sha256": "1d317366c4df80f4e4a54012e4b20a2991558a364156683a21b935eb73efb96d"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/asset/die.obj",
+      "bytes": 9028,
+      "mode": "100644",
+      "sha256": "b7132c1865d99d33147df45ce319ef6d528a32caa9ef666ccc5684d4fbfdfab9"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/asset/spot.obj",
+      "bytes": 330624,
+      "mode": "100644",
+      "sha256": "0738b5e8608fed74e5e8c7aa8dd0af97b4b74f9f6cbf7aac84cd7e40b2e44a75"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/asset/spot.png",
+      "bytes": 78699,
+      "mode": "100644",
+      "sha256": "cddabbae52a666173e7953e238b88340d285044dc20b36f8ed3f1a41db534fa5"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/bowl.xml",
+      "bytes": 1210,
+      "mode": "100644",
+      "sha256": "d2249a0335bb9aea2bd4f776325f6921e4d194e1b867edae5ce551eba8138d3f"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/cow.xml",
+      "bytes": 1287,
+      "mode": "100644",
+      "sha256": "3478f33a02253e6d230a4ef48483cfc841e09199d597655f9612a63870222987"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/gear.xml",
+      "bytes": 1371,
+      "mode": "100644",
+      "sha256": "4ca9d78917bc66c27f99b50224281cbef25834c2b5e88fed5698f56237f428d8"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/mesh.xml",
+      "bytes": 915,
+      "mode": "100644",
+      "sha256": "6d5b848404378d1f8394bfa6e6a055174911dfee43102001e87bd9a7deba9645"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/mug.xml",
+      "bytes": 872,
+      "mode": "100644",
+      "sha256": "ad7509dbe7029dd0895d9a0128be22721f5b5ec2e81b637831d640e5930f4f43"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/nutbolt.xml",
+      "bytes": 1330,
+      "mode": "100644",
+      "sha256": "11dd070b65c70e25eecf53c773ba3568a967a952e4b6dfa77eb61c1735a5c353"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/primitives.xml",
+      "bytes": 1649,
+      "mode": "100644",
+      "sha256": "52844a250cc0d7833aefaacd0db94ce8052a7d1b9d07b3e58a068fcaaed67987"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/scene.xml",
+      "bytes": 1491,
+      "mode": "100644",
+      "sha256": "a6cbe6cbf09f6d520e42f210e8645e63aaf5398d0ea7c9b4c060782e428ca1f7"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sdf/torus.xml",
+      "bytes": 1318,
+      "mode": "100644",
+      "sha256": "7dfac7cbfa47babedc7577d1042b05a1d83cd078a01fe248a5af460c264f239b"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sensor/a.png",
+      "bytes": 195,
+      "mode": "100644",
+      "sha256": "9db4e8b7a62cb9d5df52f831a3bbab0fa28b01c6bb0566107604b2a26d485aa2"
+    },
+    {
+      "path": "simulate/mujoco/model/plugin/sensor/touch_grid.xml",
+      "bytes": 1745,
+      "mode": "100644",
+      "sha256": "2c65d6b99a33de3921e55619ca52e754c49e5ae3a84f903b3956d200ecb40fce"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/README.md",
+      "bytes": 691,
+      "mode": "100644",
+      "sha256": "6b7d0f85ee1a22935c5a75232b232f6b94bbc2524b1760520fecb17a03fb418d"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/asset/marble.png",
+      "bytes": 318067,
+      "mode": "100644",
+      "sha256": "9f66cafdf3b915cff439a9ce00aa6e4e71ae9efc4657552de8ee675e6af49e30"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/bowl.xml",
+      "bytes": 1457,
+      "mode": "100644",
+      "sha256": "440218835440c0d70460ce60ba0711c3295e1f5e7359d09b973217222e3e2155"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/bunnies.xml",
+      "bytes": 572,
+      "mode": "100644",
+      "sha256": "4fdd01b72b06a79f83e3e553183a51d0622c9e61a7404ad61094b85081d74fe9"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/bunny.obj",
+      "bytes": 198443,
+      "mode": "100644",
+      "sha256": "c93e4a6fc6423194ff8b24de372d0a0632264290302a11d391f832313a0d55ef"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/container.xml",
+      "bytes": 1166,
+      "mode": "100644",
+      "sha256": "a94c4109760dadebc869a1e81c18f2ad60641b59c07b4b1a960b16cfdf5ba444"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/cylinder.xml",
+      "bytes": 839,
+      "mode": "100644",
+      "sha256": "214ed59103f1ade97564708d0d47291b5bd4c474114f6dcfb49f52332fda1f0e"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/helix.xml",
+      "bytes": 674,
+      "mode": "100644",
+      "sha256": "e9857a2aef1c982f709e394a56b3e6f602a733a314f7890e947bfa104fdd7652"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/leaves.xml",
+      "bytes": 1833,
+      "mode": "100644",
+      "sha256": "221bc361d9112a4ad37c34cba08294a14c1e01ef9544e00a1efd9d3fbbc81d04"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/newton_cradle.xml",
+      "bytes": 2042,
+      "mode": "100644",
+      "sha256": "bab284242bb0f743c2de78ac2ed10cfd4a113f6bc6340da2262e58c0b4206f2c"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/particle.xml",
+      "bytes": 1733,
+      "mode": "100644",
+      "sha256": "ee8854602b525acc14572f0aafecb64c15931f0e19b60e156c2c17347f8fd065"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/particle_free.xml",
+      "bytes": 1582,
+      "mode": "100644",
+      "sha256": "15ee6c84cc8e8373849a1ff89ad4f8de385a19a30eb4b49416f982d1d11621cf"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/particle_free2d.xml",
+      "bytes": 1616,
+      "mode": "100644",
+      "sha256": "ba8344fba8b8ae8a1d225c9102f08fbf0da3fa7348ad3a8803f39e203f8da974"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/scene.xml",
+      "bytes": 2002,
+      "mode": "100644",
+      "sha256": "524d2957bd4edffb9e2e3728843d0528520d45218bdb606182d9bce8afc39bb2"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/stonehenge.xml",
+      "bytes": 1086,
+      "mode": "100644",
+      "sha256": "54dc09496bf27d99ad7376264c196dee83c2154c02b4c78646ea26f911f53440"
+    },
+    {
+      "path": "simulate/mujoco/model/replicate/tendon.xml",
+      "bytes": 1160,
+      "mode": "100644",
+      "sha256": "0517035d2f9a1faabdc3a15709efb1d630740db70e2e14d8324ea6a13febee19"
+    },
+    {
+      "path": "simulate/mujoco/model/slider_crank/slider_crank.xml",
+      "bytes": 2347,
+      "mode": "100644",
+      "sha256": "68366859c7eacf8c5f05e1e27c84587f6f7505b7e2cc61afffec0385c144004a"
+    },
+    {
+      "path": "simulate/mujoco/model/tactile/tactile.xml",
+      "bytes": 2234,
+      "mode": "100644",
+      "sha256": "384fcf7186319c2e495750a9f3c5caa2cc0de5c565478f38eb5c75122536cd7c"
+    },
+    {
+      "path": "simulate/mujoco/model/tendon_arm/arm26.xml",
+      "bytes": 4019,
+      "mode": "100644",
+      "sha256": "4f9cd93b1d1e1323dec21a7dfbab3bb786bab0b8bdb5ef0dc5f29bf4c81dbb37"
+    },
+    {
+      "path": "simulate/mujoco/sample/array_safety.h",
+      "bytes": 3337,
+      "mode": "100644",
+      "sha256": "048e5543d556a1db33230f0b6b1a33b71a952b0c8581c9600cd190315f7fd620"
+    },
+    {
+      "path": "simulate/mujoco/sample/basic.cc",
+      "bytes": 5646,
+      "mode": "100644",
+      "sha256": "ca585c99ca6eede2b2d15fb28b6d63b7c822d4a5e8ea7e031865682a700abddc"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/CheckAvxSupport.cmake",
+      "bytes": 1740,
+      "mode": "100644",
+      "sha256": "3078ada2acc7fdbdf9b1ebbb646841eefaa58d494f937ca309ffc9d0c595b696"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/FindOrFetch.cmake",
+      "bytes": 4780,
+      "mode": "100644",
+      "sha256": "152fce04bdba5ac1b4039c6e7c69c889ebe2c688b3158ebb6015775bb2f4c794"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/MujocoHarden.cmake",
+      "bytes": 1242,
+      "mode": "100644",
+      "sha256": "557d330a8f92d64369e23ab327a79b5c340dd97d71b1b290621ed4c15b16ce78"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/MujocoLinkOptions.cmake",
+      "bytes": 2302,
+      "mode": "100644",
+      "sha256": "95533f744258b1fb4c194be261c41a5dae1ed508f6b8f629829df61780b758da"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/MujocoMacOS.cmake",
+      "bytes": 1789,
+      "mode": "100644",
+      "sha256": "d5ae631b3fe676e6ac751d9b4ec957934b9c4b0cf4844b0342044d516e8a701b"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/SampleDependencies.cmake",
+      "bytes": 2631,
+      "mode": "100644",
+      "sha256": "79440d3dc8d690c4cec75832c7bbb5213de952f94bfbd7ee1f493f1862a13153"
+    },
+    {
+      "path": "simulate/mujoco/sample/cmake/SampleOptions.cmake",
+      "bytes": 3982,
+      "mode": "100644",
+      "sha256": "183d38a83a083eb0c776bbbdefc18b9299f0fe2edfb19b1f309356aa68eeea47"
+    },
+    {
+      "path": "simulate/mujoco/sample/compile.cc",
+      "bytes": 4305,
+      "mode": "100644",
+      "sha256": "61b4e5d60decb2667ba3e0394503e3188bb7dccb59dec836021272cf5ef08d28"
+    },
+    {
+      "path": "simulate/mujoco/sample/record.cc",
+      "bytes": 8653,
+      "mode": "100644",
+      "sha256": "6c751d365ebf823970ababffaef1e38e59fb82ee00ab6351fa5057f6460fd967"
+    },
+    {
+      "path": "simulate/mujoco/sample/testspeed.cc",
+      "bytes": 10462,
+      "mode": "100644",
+      "sha256": "588628fa78ceacbd5d4ef33cf71631816f4ead3703ff06cf4e7e64c5a26d5554"
+    },
+    {
+      "path": "simulate/mujoco/simulate/README.md",
+      "bytes": 610,
+      "mode": "100644",
+      "sha256": "160844f521c7abe4d09b8d62d94a49c84eb023bcab052993bff6978e05d2b7ab"
+    },
+    {
+      "path": "simulate/mujoco/simulate/array_safety.h",
+      "bytes": 3337,
+      "mode": "100644",
+      "sha256": "048e5543d556a1db33230f0b6b1a33b71a952b0c8581c9600cd190315f7fd620"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/CheckAvxSupport.cmake",
+      "bytes": 1740,
+      "mode": "100644",
+      "sha256": "3078ada2acc7fdbdf9b1ebbb646841eefaa58d494f937ca309ffc9d0c595b696"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/FindOrFetch.cmake",
+      "bytes": 4780,
+      "mode": "100644",
+      "sha256": "152fce04bdba5ac1b4039c6e7c69c889ebe2c688b3158ebb6015775bb2f4c794"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/MujocoHarden.cmake",
+      "bytes": 1242,
+      "mode": "100644",
+      "sha256": "557d330a8f92d64369e23ab327a79b5c340dd97d71b1b290621ed4c15b16ce78"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/MujocoLinkOptions.cmake",
+      "bytes": 2302,
+      "mode": "100644",
+      "sha256": "95533f744258b1fb4c194be261c41a5dae1ed508f6b8f629829df61780b758da"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/MujocoMacOS.cmake",
+      "bytes": 1789,
+      "mode": "100644",
+      "sha256": "d5ae631b3fe676e6ac751d9b4ec957934b9c4b0cf4844b0342044d516e8a701b"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/SimulateDependencies.cmake",
+      "bytes": 2640,
+      "mode": "100644",
+      "sha256": "4dc3b12b939e5cd61289c78775d4e93494cf075cbe52cbdc64a6a4b309a60694"
+    },
+    {
+      "path": "simulate/mujoco/simulate/cmake/SimulateOptions.cmake",
+      "bytes": 3982,
+      "mode": "100644",
+      "sha256": "183d38a83a083eb0c776bbbdefc18b9299f0fe2edfb19b1f309356aa68eeea47"
+    },
+    {
+      "path": "simulate/mujoco/simulate/glfw_adapter.cc",
+      "bytes": 7745,
+      "mode": "100644",
+      "sha256": "a315043dd702fd80e1c8f890e8aff9e9f394f4dc3c5889be64cf01f57375e9db"
+    },
+    {
+      "path": "simulate/mujoco/simulate/glfw_adapter.h",
+      "bytes": 2489,
+      "mode": "100644",
+      "sha256": "cfddb35d909d19dbd7a7871b2065f92321003352a07e6d59f008e6a7709938b3"
+    },
+    {
+      "path": "simulate/mujoco/simulate/glfw_corevideo.h",
+      "bytes": 1487,
+      "mode": "100644",
+      "sha256": "7b834e24e32e8c0dcbf17e6ff1651b358b7d70c5460e88b2b3b30fdb40fc3ab9"
+    },
+    {
+      "path": "simulate/mujoco/simulate/glfw_corevideo.mm",
+      "bytes": 2530,
+      "mode": "100644",
+      "sha256": "609fd62b00b7cb0d4ac923bed8a03a8aefa687b6ec07f7dd78f42247b40a5a1b"
+    },
+    {
+      "path": "simulate/mujoco/simulate/glfw_dispatch.cc",
+      "bytes": 4395,
+      "mode": "100644",
+      "sha256": "29b20f75cf6ab5538e0af0bded91a46a40d80b8b28e2902d6e942506f057d7bf"
+    },
+    {
+      "path": "simulate/mujoco/simulate/glfw_dispatch.h",
+      "bytes": 2884,
+      "mode": "100644",
+      "sha256": "be9af6f598f39de760cd6e82e913521a8bfb1be310fcd99355af968ad1b945a7"
+    },
+    {
+      "path": "simulate/mujoco/simulate/main.cc",
+      "bytes": 15950,
+      "mode": "100644",
+      "sha256": "0f047d6ce5fe25934455544e6b1b8d1ae1d36bf2928ff76a5fecc5cbc2bee1f6"
+    },
+    {
+      "path": "simulate/mujoco/simulate/platform_ui_adapter.cc",
+      "bytes": 6119,
+      "mode": "100644",
+      "sha256": "69c707e6626d53b18785664846412c4036b0dbff30c20a802cd3b81957925542"
+    },
+    {
+      "path": "simulate/mujoco/simulate/platform_ui_adapter.h",
+      "bytes": 3378,
+      "mode": "100644",
+      "sha256": "995bcedda7769ca8e0083cc39b2ed671b98624e9b7588718c77f28b8c9255294"
+    },
+    {
+      "path": "simulate/mujoco/simulate/simulate.cc",
+      "bytes": 98724,
+      "mode": "100644",
+      "sha256": "209c87a39ba98acaf7ccdbfab15746899217c9b3fb9021ee4c06e5bd033beaad"
+    },
+    {
+      "path": "simulate/mujoco/simulate/simulate.h",
+      "bytes": 11520,
+      "mode": "100644",
+      "sha256": "eb87417f0c4824da9ad3ea2303bdd59250766fd843c789be3ecade730c1bdc30"
+    },
+    {
+      "path": "simulate/src/joystick/LICENSE-2.0.txt",
+      "bytes": 11347,
+      "mode": "100644",
+      "sha256": "a6694e5593082a96e2ba9f4824de1a54d5a9897abf0557250618f06843ff4bf1"
+    },
+    {
+      "path": "simulate/src/joystick/joystick.cc",
+      "bytes": 2019,
+      "mode": "100755",
+      "sha256": "d06f23ae5b2a94707772fc2473c4031f2552e34f0578bfe5b857efb5b76af1d9"
+    },
+    {
+      "path": "simulate/src/joystick/joystick.h",
+      "bytes": 3713,
+      "mode": "100755",
+      "sha256": "83eceee28b9e0a87571cfad9c353f27a662ab9b52edbe9bc948ce06fd7955d9b"
+    },
+    {
+      "path": "simulate/src/joystick/jstest.cc",
+      "bytes": 2701,
+      "mode": "100755",
+      "sha256": "13b0b3b403793b87fb98e06356ac6210eed174adc343a690f859b43f4f021b0b"
+    },
+    {
+      "path": "simulate/src/joystick/readme.md",
+      "bytes": 104,
+      "mode": "100644",
+      "sha256": "93f121ef0aebe6103baaf704950075b1458e13c76f2c71a8762652b3d7e94b2f"
+    },
+    {
+      "path": "simulate/src/lodepng/LICENSE",
+      "bytes": 886,
+      "mode": "100644",
+      "sha256": "bdafa318b8e637d600ca1b60545e894881977a16a16b74809c95e805701621e3"
+    },
+    {
+      "path": "simulate/src/lodepng/README.md",
+      "bytes": 2238,
+      "mode": "100644",
+      "sha256": "6d6def2448127b8401dd8b0033d5512c4ce1f6cde1d31db64a9b1cf95e3236a8"
+    },
+    {
+      "path": "simulate/src/lodepng/lodepng.cpp",
+      "bytes": 311879,
+      "mode": "100644",
+      "sha256": "eff7b1e37c3fdbce20f51a4d94fa248f0a8cc35f106012219a7e6360173ed50c"
+    },
+    {
+      "path": "simulate/src/lodepng/lodepng.h",
+      "bytes": 107788,
+      "mode": "100644",
+      "sha256": "b735b7e0357319973e9488d520d7f270d734a6e9e1bf924fb1d5b8d26d7e97ce"
+    },
+    {
+      "path": "simulate/src/main.cc",
+      "bytes": 19707,
+      "mode": "100755",
+      "sha256": "3a9f57190f21dcb48e84eb6a6fe7829aeee196a111ce0591e2ad4933bf00a204"
+    },
+    {
+      "path": "simulate/src/param.h",
+      "bytes": 2362,
+      "mode": "100644",
+      "sha256": "6d3b0c439ef7757c1014aadd39943aaba8dd8217472f72770a0f9c2dadacbccb"
+    },
+    {
+      "path": "simulate/src/physics_joystick.h",
+      "bytes": 2345,
+      "mode": "100644",
+      "sha256": "ae04689f1f4479e175119f9919b3134f0ddff07963f5ebd21278a66318a39475"
+    },
+    {
+      "path": "simulate/src/unitree_sdk2_bridge.h",
+      "bytes": 13437,
+      "mode": "100644",
+      "sha256": "c3ab35621a4e10b10f4f69bc9c4178a5711017981a9371dbea7d1a6504bbb2b5"
+    },
+    {
+      "path": "src/__init__.py",
+      "bytes": 65,
+      "mode": "100644",
+      "sha256": "cfa1a7f468fbedc17cbd25a2b52ab5b824cd5f5bcaaffcf8ddbf8c75837ee6f0"
+    },
+    {
+      "path": "src/assets/__init__.py",
+      "bytes": 0,
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/assets/motions/__init__.py",
+      "bytes": 0,
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/assets/motions/g1/dance1_subject2.csv",
+      "bytes": 1348749,
+      "mode": "100644",
+      "sha256": "1793edcd8345fa4736676c06008186d1a3ecaaf99df0c380218eaa4e0de100ec"
+    },
+    {
+      "path": "src/assets/motions/g1_23dof/dance1_subject2.csv",
+      "bytes": 255501,
+      "mode": "100644",
+      "sha256": "a1f56117ea3c2bc4cc4bf7045e0f352f660c6b416ddb998facbe6024a0a9aba5"
+    },
+    {
+      "path": "src/assets/robots/__init__.py",
+      "bytes": 1110,
+      "mode": "100644",
+      "sha256": "9f45d1126dc5fe58e9673adb5f3c8b4eaa6f20d4a4af5a75e0f9a183ecc7095e"
+    },
+    {
+      "path": "src/assets/robots/compat.py",
+      "bytes": 470,
+      "mode": "100644",
+      "sha256": "839ce0b09c7be8d4e67728247f86fbb921ba427ef6d3385557183ba7b49072b1"
+    },
+    {
+      "path": "src/assets/robots/lite3/LICENSE.txt",
+      "bytes": 1502,
+      "mode": "100644",
+      "sha256": "6bc5967b1cfbdb83b0798942a5f11d4e0555ad8de17697bd4d7eaab6e22f9be5"
+    },
+    {
+      "path": "src/assets/robots/lite3/Lite3.xml",
+      "bytes": 14445,
+      "mode": "100644",
+      "sha256": "512a93c353e111c4bf595eba429344599c4b0b617bb917c281d1e7cd648b2aed"
+    },
+    {
+      "path": "src/assets/robots/lite3/SOURCE.md",
+      "bytes": 579,
+      "mode": "100644",
+      "sha256": "afdce4a2d7a8145f329295f5a86d4adaa982d58c07a3bd03a33b8d2c5f2ff076"
+    },
+    {
+      "path": "src/assets/robots/lite3/meshes/hip.STL",
+      "bytes": 326084,
+      "mode": "100644",
+      "sha256": "3386fa94992dbfc4d3e06c6d9fb110e2c4abd87f94c3ac766fdcce85c43341f3"
+    },
+    {
+      "path": "src/assets/robots/lite3/meshes/shank.STL",
+      "bytes": 1352184,
+      "mode": "100644",
+      "sha256": "5410bae3b9b1e9fbc30343041450a80fc609806c2a83418bd2288b0720aec098"
+    },
+    {
+      "path": "src/assets/robots/lite3/meshes/thigh.STL",
+      "bytes": 499284,
+      "mode": "100644",
+      "sha256": "f29ea97407a9a30cb4549206d080848350d8b455bf4b9a63441241cdacab1719"
+    },
+    {
+      "path": "src/assets/robots/lite3/meshes/torso.STL",
+      "bytes": 1318334,
+      "mode": "100644",
+      "sha256": "6f3f5fc4b9985db56d741ac1b6b93e11d9fb283eb128f8800ad9603772bbcda2"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/__init__.py",
+      "bytes": 28,
+      "mode": "100644",
+      "sha256": "be77f5ef193ce72df657a7b0c66530394dcf9c5c60e77526d820d16b8dca6667"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/a2_constants.py",
+      "bytes": 3019,
+      "mode": "100644",
+      "sha256": "c5d802a50bf899ef24976b071eabcbf21e8a0caa9922297870dfe077f00b4747"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/a2.xml",
+      "bytes": 14443,
+      "mode": "100644",
+      "sha256": "7e3735748295bb822d9be90537fa31e882cefe40e523fc00deced383a23ad91c"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/base_link.STL",
+      "bytes": 3421184,
+      "mode": "100644",
+      "sha256": "8d63bf204cc935a7df7415d31bfb953f3ded653899b6b27bbf0268fc363e5904"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_front_Link1.STL",
+      "bytes": 249684,
+      "mode": "100644",
+      "sha256": "386cc25336de29f5d397424dc807abdc3551935dfe006ee66f5c2d44cee95155"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_front_Link2.STL",
+      "bytes": 548484,
+      "mode": "100644",
+      "sha256": "2106e36d6cb839b944707793d7be01c4a37181333797aa60fc00a4e45dc3a148"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_front_Link3.STL",
+      "bytes": 310484,
+      "mode": "100644",
+      "sha256": "26a39dfaf784d9fe16019690e0d4e766232a2117453b7884cab3f3d81ec3ff5b"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_front_Link4.STL",
+      "bytes": 1719884,
+      "mode": "100644",
+      "sha256": "033aae39b32d50eaf1c034a887dbd61b90b9aade3d9e76d817d8832152737570"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_hind_Link1.STL",
+      "bytes": 249684,
+      "mode": "100644",
+      "sha256": "d4b121e9382c7735ab60d32dda444ca48f278cea74b21ec94ac54a8032c75ce0"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_hind_Link2.STL",
+      "bytes": 548484,
+      "mode": "100644",
+      "sha256": "d62c468ae60f5f17daa39d8ed104bdd7b6b0cec460dfe5712db2a041f14e1a3f"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_hind_Link3.STL",
+      "bytes": 310484,
+      "mode": "100644",
+      "sha256": "bf0ce4ee36d62f2301796ed390252b65d0b637502e79dae2446132201ef62e23"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/left_hind_Link4.STL",
+      "bytes": 1719884,
+      "mode": "100644",
+      "sha256": "bb913b7637a5e3d252efa7e71e4af3be63658f699a2401b29f2a059bc0ae6326"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_front_Link1.STL",
+      "bytes": 249684,
+      "mode": "100644",
+      "sha256": "722ad81adc6501a41469fd1c4d9a99d935b15662b631a206fe5b748a0d6eee52"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_front_Link2.STL",
+      "bytes": 547484,
+      "mode": "100644",
+      "sha256": "ea81193979699f476db044cc3e51921100b423de60fde28f74e99c0b94408616"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_front_Link3.STL",
+      "bytes": 310484,
+      "mode": "100644",
+      "sha256": "5fc735e0a33aed6e3d68d73323d58450eb4179a17be460afcf28969ecfb70fbe"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_front_Link4.STL",
+      "bytes": 1719884,
+      "mode": "100644",
+      "sha256": "27871fb73330654fdafa682b5c7d0722f59462e4696ed05b870c072a31eba75d"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_hind_Link1.STL",
+      "bytes": 249684,
+      "mode": "100644",
+      "sha256": "cc9c733858fcd8dc0347329e3187c060b20ab5f7b34ddc61cf16c5d1b1d842a1"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_hind_Link2.STL",
+      "bytes": 547484,
+      "mode": "100644",
+      "sha256": "21a3bbfa7edb7116d34be42fed84d0bfbf4ef95f000c5a8c243398046d891889"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_hind_Link3.STL",
+      "bytes": 310484,
+      "mode": "100644",
+      "sha256": "618152ab154f41c1b6ac9a056c800fa52e6861d7f74c180cf3e4bc3b65415ebf"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/assets/right_hind_Link4.STL",
+      "bytes": 1719884,
+      "mode": "100644",
+      "sha256": "dee1269d94e2ae521058b842ba33f48eaec435317515c7b169076386ca5756d9"
+    },
+    {
+      "path": "src/assets/robots/unitree_a2/xmls/scene_a2.xml",
+      "bytes": 18935,
+      "mode": "100644",
+      "sha256": "0c0625bf017c6b652233619c3fc63da48dec098b1b96a8b0074bf76b37887c39"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/__init__.py",
+      "bytes": 29,
+      "mode": "100644",
+      "sha256": "58c7ca7082d5e4514f6059f06e4702d098c17ee187aad00c16a983000dad9dd9"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/as2_constants.py",
+      "bytes": 3034,
+      "mode": "100644",
+      "sha256": "5fa986aec780a705cac4664f46e10f03435945e0b2449c26acd7592a2db0d21e"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/as2.xml",
+      "bytes": 12853,
+      "mode": "100644",
+      "sha256": "bdfe2c6dc4c0f29aaf51992cdc7c40c7302f4e2e04305a71ee061b04216e55c8"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FL_calf.STL",
+      "bytes": 1712684,
+      "mode": "100644",
+      "sha256": "f54d50478562a3ff5fc1ab5d6d0a8a88daad2e9ce51ded4b4da09d289ece023b"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FL_foot.STL",
+      "bytes": 2965884,
+      "mode": "100644",
+      "sha256": "9895cf0abdca2cde395327ab9b49b2da07af3e1dad1e52a2ef36b66f254b117c"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FL_hip.STL",
+      "bytes": 3495584,
+      "mode": "100644",
+      "sha256": "1ad48fb81fd30426831ec8ae46ee952415ae3e80916be73641fcacdf8bf0c34b"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FL_thigh.STL",
+      "bytes": 3610484,
+      "mode": "100644",
+      "sha256": "0e147268b0335b37276261538bf0e37e974a4fa5d986c8b70cd659377fb7aa1a"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FR_calf.STL",
+      "bytes": 1712684,
+      "mode": "100644",
+      "sha256": "f54d50478562a3ff5fc1ab5d6d0a8a88daad2e9ce51ded4b4da09d289ece023b"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FR_foot.STL",
+      "bytes": 2965884,
+      "mode": "100644",
+      "sha256": "9895cf0abdca2cde395327ab9b49b2da07af3e1dad1e52a2ef36b66f254b117c"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FR_hip.STL",
+      "bytes": 3500484,
+      "mode": "100644",
+      "sha256": "1dbf34bc4d38569184635d3d4e784f43aa432f709f399ffe3516c361758fb65b"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/FR_thigh.STL",
+      "bytes": 3604384,
+      "mode": "100644",
+      "sha256": "3460a1c28e8a965cafdb085402cc755af9edc4318677507e0f85793c7ad52f09"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RL_calf.STL",
+      "bytes": 1712684,
+      "mode": "100644",
+      "sha256": "f54d50478562a3ff5fc1ab5d6d0a8a88daad2e9ce51ded4b4da09d289ece023b"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RL_foot.STL",
+      "bytes": 2965884,
+      "mode": "100644",
+      "sha256": "9895cf0abdca2cde395327ab9b49b2da07af3e1dad1e52a2ef36b66f254b117c"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RL_hip.STL",
+      "bytes": 3495584,
+      "mode": "100644",
+      "sha256": "1ad48fb81fd30426831ec8ae46ee952415ae3e80916be73641fcacdf8bf0c34b"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RL_thigh.STL",
+      "bytes": 3610484,
+      "mode": "100644",
+      "sha256": "0e147268b0335b37276261538bf0e37e974a4fa5d986c8b70cd659377fb7aa1a"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RR_calf.STL",
+      "bytes": 1719084,
+      "mode": "100644",
+      "sha256": "3950407cd9449e5b737101f065ba65caf1b26d7ede58c687602b0fae573ff620"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RR_foot.STL",
+      "bytes": 2880184,
+      "mode": "100644",
+      "sha256": "19002323a262c701553d5afbbc75b0194339482a61c958e38df7f44cef72644a"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RR_hip.STL",
+      "bytes": 3502584,
+      "mode": "100644",
+      "sha256": "d1a0bfd69a348e8101989980449af99ed4055abc1924b2b69ef041cee9d8f916"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/RR_thigh.STL",
+      "bytes": 3598484,
+      "mode": "100644",
+      "sha256": "c5e541cfde796abd6da54da6b8cca4d1e41a0208440c1fe133a4f2b8e320624d"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/base_link.STL",
+      "bytes": 7225384,
+      "mode": "100644",
+      "sha256": "ec787cbc413809f70144136d96fd5ede583baeae0270f2730d88e59b2925f9b5"
+    },
+    {
+      "path": "src/assets/robots/unitree_as2/xmls/assets/s.STL",
+      "bytes": 14450784,
+      "mode": "100644",
+      "sha256": "70a1b7bbd0d88faf51fcb83c33f9c24a44eef496b7286a1b683deb141e8c9d59"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/__init__.py",
+      "bytes": 27,
+      "mode": "100644",
+      "sha256": "c11e649d6d5209becaf6dbca2d09dee83c17844b5d941c2e1cc6f16ba618bf14"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/g1_23dof_constants.py",
+      "bytes": 7234,
+      "mode": "100644",
+      "sha256": "2b986a71a5f022cd57b2de70f6b9b22304d29a419388c886ce639e2913f4669f"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/g1_constants.py",
+      "bytes": 7740,
+      "mode": "100644",
+      "sha256": "9d18875f0dd096d49dda62416055bd90c6ebbb9c7e1a7c7bb03f606bf8667744"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/head_link.STL",
+      "bytes": 932784,
+      "mode": "100644",
+      "sha256": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_ankle_pitch_link.STL",
+      "bytes": 71184,
+      "mode": "100644",
+      "sha256": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_ankle_roll_link.STL",
+      "bytes": 653384,
+      "mode": "100644",
+      "sha256": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_elbow_link.STL",
+      "bytes": 88784,
+      "mode": "100644",
+      "sha256": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_hip_pitch_link.STL",
+      "bytes": 181684,
+      "mode": "100644",
+      "sha256": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_hip_roll_link.STL",
+      "bytes": 192184,
+      "mode": "100644",
+      "sha256": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_hip_yaw_link.STL",
+      "bytes": 296284,
+      "mode": "100644",
+      "sha256": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_knee_link.STL",
+      "bytes": 854884,
+      "mode": "100644",
+      "sha256": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_rubber_hand.STL",
+      "bytes": 2287484,
+      "mode": "100644",
+      "sha256": "cff2221a690fa69303f61fce68f2d155c1517b52efb6ca9262dd56e0bc6e70fe"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_shoulder_pitch_link.STL",
+      "bytes": 176784,
+      "mode": "100644",
+      "sha256": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_shoulder_roll_link.STL",
+      "bytes": 400284,
+      "mode": "100644",
+      "sha256": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_shoulder_yaw_link.STL",
+      "bytes": 249184,
+      "mode": "100644",
+      "sha256": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_wrist_pitch_link.STL",
+      "bytes": 85984,
+      "mode": "100644",
+      "sha256": "b251d8e05047f695d0f536cd78c11973cfa4e78d08cfe82759336cc3471de3a9"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_wrist_roll_link.STL",
+      "bytes": 356184,
+      "mode": "100644",
+      "sha256": "edc387c9a0ba8c2237e9b296d32531426fabeb6f53e58df45c76106bca74148c"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_wrist_roll_rubber_hand.STL",
+      "bytes": 3484884,
+      "mode": "100644",
+      "sha256": "e81030abd023bd9e4a308ef376d814a2c12d684d8a7670c335bbd5cd7809c909"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/left_wrist_yaw_link.STL",
+      "bytes": 318684,
+      "mode": "100644",
+      "sha256": "83f8fb3a726bf9613d65dd14f0f447cb918c3c95b3938042a0c9c09749267d3b"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/logo_link.STL",
+      "bytes": 243384,
+      "mode": "100644",
+      "sha256": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/pelvis.STL",
+      "bytes": 1060884,
+      "mode": "100644",
+      "sha256": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/pelvis_contour_link.STL",
+      "bytes": 1805184,
+      "mode": "100644",
+      "sha256": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_ankle_pitch_link.STL",
+      "bytes": 71184,
+      "mode": "100644",
+      "sha256": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_ankle_roll_link.STL",
+      "bytes": 653784,
+      "mode": "100644",
+      "sha256": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_elbow_link.STL",
+      "bytes": 88784,
+      "mode": "100644",
+      "sha256": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_hip_pitch_link.STL",
+      "bytes": 181284,
+      "mode": "100644",
+      "sha256": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_hip_roll_link.STL",
+      "bytes": 192684,
+      "mode": "100644",
+      "sha256": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_hip_yaw_link.STL",
+      "bytes": 296284,
+      "mode": "100644",
+      "sha256": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_knee_link.STL",
+      "bytes": 852284,
+      "mode": "100644",
+      "sha256": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_rubber_hand.STL",
+      "bytes": 2192684,
+      "mode": "100644",
+      "sha256": "99533b778bca6246144fa511bb9d4e555e075c641f2a0251e04372869cd99d67"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_shoulder_pitch_link.STL",
+      "bytes": 176784,
+      "mode": "100644",
+      "sha256": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_shoulder_roll_link.STL",
+      "bytes": 401884,
+      "mode": "100644",
+      "sha256": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_shoulder_yaw_link.STL",
+      "bytes": 249984,
+      "mode": "100644",
+      "sha256": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_wrist_pitch_link.STL",
+      "bytes": 79584,
+      "mode": "100644",
+      "sha256": "d22f8f3b3127f15a63e5be1ee273cd5075786c3142f1c3d9f76cbf43d2a26477"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_wrist_roll_link.STL",
+      "bytes": 356084,
+      "mode": "100644",
+      "sha256": "a7ee9212ff5b94d6cb7f52bb1bbf3f352194d5b598acff74f4c77d340c5b344f"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_wrist_roll_rubber_hand.STL",
+      "bytes": 3481584,
+      "mode": "100644",
+      "sha256": "0729aff1ac4356f9314de13a46906267642e58bc47f0d8a7f17f6590a6242ccf"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/right_wrist_yaw_link.STL",
+      "bytes": 341484,
+      "mode": "100644",
+      "sha256": "bc9dece2d12509707e0057ba2e48df8f3d56db0c79410212963a25e8a50f61a6"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/torso_link_23dof_rev_1_0.STL",
+      "bytes": 7825434,
+      "mode": "100644",
+      "sha256": "3cd0d56fde14b73c1623304684805029971c4f84b596f9914e823ca70a107fd2"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/torso_link_rev_1_0.STL",
+      "bytes": 2570584,
+      "mode": "100644",
+      "sha256": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/waist_roll_link_rev_1_0.STL",
+      "bytes": 85884,
+      "mode": "100644",
+      "sha256": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/assets/waist_yaw_link_rev_1_0.STL",
+      "bytes": 619984,
+      "mode": "100644",
+      "sha256": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/g1.xml",
+      "bytes": 21462,
+      "mode": "100644",
+      "sha256": "56539bc76eadb05dd439c47de94df52130ea8fa243d08bdddd9cbc32dd4c78a0"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/g1_23dof.xml",
+      "bytes": 17780,
+      "mode": "100644",
+      "sha256": "21880ce95250d5f41b16c7b11b264b3de935b1fa2a5ca6201828ccfb85159180"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/scene_g1.xml",
+      "bytes": 32907,
+      "mode": "100644",
+      "sha256": "f96a137240a2ed248e115fb6e5253959a54cc23216188ac538456d2ac179b6fd"
+    },
+    {
+      "path": "src/assets/robots/unitree_g1/xmls/scene_g1_23dof.xml",
+      "bytes": 29496,
+      "mode": "100644",
+      "sha256": "260db1c63edfa4aabc319b3a1d9dd8b03bdad634e63b38b8e182e90c5ff31731"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/__init__.py",
+      "bytes": 29,
+      "mode": "100644",
+      "sha256": "d52bb3e1a2f7acf191ee18c78b421c7a7e8da63379db8224e08900526b8653f5"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/go2_constants.py",
+      "bytes": 3036,
+      "mode": "100644",
+      "sha256": "468abf2dca6f8f4eab34cda7798d1e0ab2d1d6c679b24e979c794c460ef725ed"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/base_0.obj",
+      "bytes": 1330465,
+      "mode": "100644",
+      "sha256": "8cdc53719002a5ee737d867904e534a6d6fa930b616bdcc1b3131e577d4e46c0"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/base_1.obj",
+      "bytes": 811791,
+      "mode": "100644",
+      "sha256": "39d2f4724ff64dd5a0640c308fd98902a2946660a8d033ec8dbf368fd5af0dd6"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/base_2.obj",
+      "bytes": 294090,
+      "mode": "100644",
+      "sha256": "29cae463f95d678e4ede863c36c9b19b0d356b8340412add10670d70bdcc3095"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/base_3.obj",
+      "bytes": 379093,
+      "mode": "100644",
+      "sha256": "f51ba43bf300e68957a0c1aa83eaf3e4926f4ac7e64a0d6c33ae5d21fcbcf5f6"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/base_4.obj",
+      "bytes": 7776234,
+      "mode": "100644",
+      "sha256": "49ddec0129546e5dd2075d5beacf7f207baa2860aeff7626818e64d2efbf3821"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/calf_0.obj",
+      "bytes": 877174,
+      "mode": "100644",
+      "sha256": "4a818cd563c5b7e2a271504442d05fd777d38cbaa028d4a10ad29c9f87bb355e"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/calf_1.obj",
+      "bytes": 326865,
+      "mode": "100644",
+      "sha256": "51950c3a153ae3208592df86ea11c9d6756f8f645ebca5caf6910c61aeb03817"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/calf_mirror_0.obj",
+      "bytes": 876538,
+      "mode": "100644",
+      "sha256": "6dc0406207a1c08a5953fd5962aca1a270fd06593d30d100205e05c1b32d4af2"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/calf_mirror_1.obj",
+      "bytes": 327261,
+      "mode": "100644",
+      "sha256": "f84f5af90b914633165beb3a5493ee499169144c5797dcf04c6eb5842f74b31a"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/foot.obj",
+      "bytes": 1144729,
+      "mode": "100644",
+      "sha256": "df9e78a7c0110d02557439010f2a5f11f0ec4fd907b32704145dbd6aa7affc0b"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/hip_0.obj",
+      "bytes": 2863864,
+      "mode": "100644",
+      "sha256": "cc29932ab4d251ce3f72389ec4c1f757e44eee138b87e772b648c2bc76b506cd"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/hip_1.obj",
+      "bytes": 2767918,
+      "mode": "100644",
+      "sha256": "3fd5bd9b2ef6abe622c0739d3c67eaa1679b19b47132951972c4892a779ea7cf"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/thigh_0.obj",
+      "bytes": 2841868,
+      "mode": "100644",
+      "sha256": "bb3edfe6a7b04f4f4dff1ce7b05d426ddce941e276cc6372fb542055893c71ec"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/thigh_1.obj",
+      "bytes": 1491320,
+      "mode": "100644",
+      "sha256": "3a631822f9f7d2114b1b79dcdff5abf95103630abb7d91d1f3b8b18117132ed2"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/thigh_mirror_0.obj",
+      "bytes": 2817674,
+      "mode": "100644",
+      "sha256": "07abaedce761f1dd48647384ac14ba1959276bc78d5a2a62051e8f1c6093933b"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/assets/thigh_mirror_1.obj",
+      "bytes": 1482261,
+      "mode": "100644",
+      "sha256": "db984a3e983eabbc9b38183427cca9ab0bb3bdb049f9eab030e06edda36579d6"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/go2.xml",
+      "bytes": 11233,
+      "mode": "100644",
+      "sha256": "077fc7f70ce2ddcfdab814aa0800efa2c974db6c98594b2f7663f779509fb912"
+    },
+    {
+      "path": "src/assets/robots/unitree_go2/xmls/scene_go2.xml",
+      "bytes": 15698,
+      "mode": "100644",
+      "sha256": "97c7ece37cb37666f2767abb4449c3a8a6a2a0e90716d14940e09423f5d426ef"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/__init__.py",
+      "bytes": 29,
+      "mode": "100644",
+      "sha256": "c6c2bd34c3290d48239d89d048a3662542f19763b99f316969b8e01ca70c3fba"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/h1_2_constants.py",
+      "bytes": 4110,
+      "mode": "100644",
+      "sha256": "9e92a6ecd3e42bac77de5b49a92bc2122a4788f8f01251888c5d6830f2e873ad"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_hand_base_link.STL",
+      "bytes": 1448084,
+      "mode": "100644",
+      "sha256": "33ab4e97801bd5421903a78f5977a44e477ae8653eaf32358d35633e465411e0"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_index_intermediate.STL",
+      "bytes": 329384,
+      "mode": "100644",
+      "sha256": "7d8508c65db44e2349f37e8ab4c057d204a40093d4733897ae5b51075b00f5e9"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_index_proximal.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "8c601e7aa8e1c91310a75190dfb6b95a8dc981b707e5f104f9ca9ecbea118b34"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_middle_intermediate.STL",
+      "bytes": 182684,
+      "mode": "100644",
+      "sha256": "9425aea7ebbf6d1dfb2eb0714fb44dfaea6b6a81c71d6e96c8d3950f636dfa62"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_middle_proximal.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "ca2a68fed635eca290b234fbdc649779036ba5bac753addcb7ce6a086ad95949"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_pinky_intermediate.STL",
+      "bytes": 413384,
+      "mode": "100644",
+      "sha256": "5e64ea976ecf08c46e8cb80a5dd56ee3e8c5f36a0573ab3c69160d9337f941e1"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_pinky_proximal.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "180ab4ac01dab60407d0b33819883eb0ec869e4d4f349f786972135c7114fc0d"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_ring_intermediate.STL",
+      "bytes": 329484,
+      "mode": "100644",
+      "sha256": "e9145af7a515bce4c1c06d16b5be8900ec3f8375fc8e34d371315ce76f600877"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_ring_proximal.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "cbb256a70c17e21c995df66807f0755dc136d0312df245112d6d4bfcd29c43a4"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_thumb_distal.STL",
+      "bytes": 155184,
+      "mode": "100644",
+      "sha256": "b677bcdcddcd90ff4b005f83daa9e50eb4003d5e67ea4eeefbf857718716c164"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_thumb_intermediate.STL",
+      "bytes": 488584,
+      "mode": "100644",
+      "sha256": "7e93b55f2ae73fe0f62cd27e81d8a4620211068cb1c9b25e6414e802a37541ee"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_thumb_proximal.STL",
+      "bytes": 917284,
+      "mode": "100644",
+      "sha256": "9f35b78a9cab1007ac8b73023a5862ed055d33951b5742f9a783997d38e99551"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/L_thumb_proximal_base.STL",
+      "bytes": 46584,
+      "mode": "100644",
+      "sha256": "d87cb704d80de840555d0a393117d32f9bd5e91425e0458363e0a799aa4e5339"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_hand_base_link.STL",
+      "bytes": 1472384,
+      "mode": "100644",
+      "sha256": "b4d84504242a99fa915c4ed5195ce4724c67cb94d9217cd4c254cfb5937ecf5c"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_index_intermediate.STL",
+      "bytes": 335484,
+      "mode": "100644",
+      "sha256": "6942ada1189cdf442124c6b8935f3e3a3ae310092a3a1414fdeb0bd6d23578bb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_index_proximal.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "09c120f7fb7761aa97d89240cd8cb8e30c40ee60093cbb8b1c2e13a68a8e3845"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_middle_intermediate.STL",
+      "bytes": 182984,
+      "mode": "100644",
+      "sha256": "9711fac7df0c09a372e1529f74b9d506d37abf3ebc3241d976ad45e5ee7e2d69"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_middle_proximal.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "36fc62c609800ce6d4521ae6f3c4c9b8a732be28654f32f04893696c17e6930c"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_pinky_intermediate.STL",
+      "bytes": 416484,
+      "mode": "100644",
+      "sha256": "1aa3fb46f689251ee38f5262b71364c680f70d1ad1dd9c6f1cae8c098b0e8422"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_pinky_proximal.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "ed0a29d2376e8874f724bc2c20384eeec93d8268e59bb8c45628335f7ab6742e"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_ring_intermediate.STL",
+      "bytes": 334784,
+      "mode": "100644",
+      "sha256": "a517debff6b924c22ae0f87dbb6aac199a1f130c7fef353a7d659e365f30b1f4"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_ring_proximal.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "46619bd6a887615d7dfe850d39a6f5d8f8c5ecfa9429c567338f3a659a5d4d75"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_thumb_distal.STL",
+      "bytes": 155584,
+      "mode": "100644",
+      "sha256": "564aa8c3d2ff0e51b75736a8b01b4c309c7098582a424ea1391ccb75125519d8"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_thumb_intermediate.STL",
+      "bytes": 483284,
+      "mode": "100644",
+      "sha256": "c157dfe5b666efb1c3d51342e56f5caad2fc350930ac21ee1e02d956c1034ca3"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_thumb_proximal.STL",
+      "bytes": 921984,
+      "mode": "100644",
+      "sha256": "347212bdb22d80fb364dd889de934d6fbb935e38d1f24c682caed84f7b6ea8cb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/R_thumb_proximal_base.STL",
+      "bytes": 46884,
+      "mode": "100644",
+      "sha256": "b49b6463f801f0402bac9c65bb989c4097f6d2c1fa1597ba560aedd640561778"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_ankle_A_link.STL",
+      "bytes": 141984,
+      "mode": "100644",
+      "sha256": "d995ff3e113813202becb65f271200c8cbdb035b2a039a8d1303d482bacc4614"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_ankle_A_rod_link.STL",
+      "bytes": 44484,
+      "mode": "100644",
+      "sha256": "25955cff955d93b01923258de3a41274a08a3450f959547dcc842a9bc47472bd"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_ankle_B_link.STL",
+      "bytes": 141984,
+      "mode": "100644",
+      "sha256": "ed6032a7dc84035da66dd70d19e8883e8d9b2c8aad0ac5e909d0ced55614bbb8"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_ankle_B_rod_link.STL",
+      "bytes": 37884,
+      "mode": "100644",
+      "sha256": "79e94994c8397293926ce2f5440f252092ac1e921fd65e2459605564e7557270"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_ankle_pitch_link.STL",
+      "bytes": 34084,
+      "mode": "100644",
+      "sha256": "24afc967dfcc867632d756dedff7aa78157c8fdb756a85a3f2a24dde5e5e1d34"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_ankle_roll_link.STL",
+      "bytes": 200484,
+      "mode": "100644",
+      "sha256": "d27424a8eab6e4aa469bce2bdcdd349892a855913f388b7908fdac121a58b7eb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_elbow_link.STL",
+      "bytes": 1287684,
+      "mode": "100644",
+      "sha256": "e4b22883f24bff1f2f6c259dd4ff44b8e00504e2b2dc6b2993021cc7985d81f3"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_hand_link.STL",
+      "bytes": 147684,
+      "mode": "100644",
+      "sha256": "8bdf9e424ffcad03646a354fe5a4a08515e523c081070afabcadc9f5f03132e1"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_hip_pitch_link.STL",
+      "bytes": 1270184,
+      "mode": "100644",
+      "sha256": "76c2f4824fb656da98f0b26c7f39f39fb0f52fbfe381bfc8bad13673d4688b92"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_hip_roll_link.STL",
+      "bytes": 383184,
+      "mode": "100644",
+      "sha256": "51aa6f60d69c6dc5fa7adc60ba4927b6215820dd635b8add09e4b9faf8037bfb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_hip_yaw_link.STL",
+      "bytes": 834984,
+      "mode": "100644",
+      "sha256": "02d63215d895626a21eb7a1742699569441dcdb2c7c5f714726b365158dd3cbc"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_knee_link.STL",
+      "bytes": 212384,
+      "mode": "100644",
+      "sha256": "3da90b2f6ff1d5df395ab4cd6955fd29bc2d713107c0e05405c983f0c6ac8689"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_shoulder_pitch_link.STL",
+      "bytes": 1968984,
+      "mode": "100644",
+      "sha256": "c4193b4640d0c1812d91806547a2473f111e6af9f4bb036fcfd98dedace4d755"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_shoulder_roll_link.STL",
+      "bytes": 1993784,
+      "mode": "100644",
+      "sha256": "598d50298bbf041202ace731e5dc892e3ef179cb1068cb95861161cf63db6f1b"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_shoulder_yaw_link.STL",
+      "bytes": 2137684,
+      "mode": "100644",
+      "sha256": "3e760b25bd805395132adeffb7916ad43b07e4e5caaf3a7f732987e19dd9d767"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_wrist_pitch_link.STL",
+      "bytes": 630184,
+      "mode": "100644",
+      "sha256": "b7bb3eaf1213e27d3ee7d4193a0f0974823ae61c821ff1ec34459d65b7e39583"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/left_wrist_roll_link.STL",
+      "bytes": 1243084,
+      "mode": "100644",
+      "sha256": "a9e5f7c5214f584a91543d0ddfac50331ac8d6316c133140cd1d2397ae23ec50"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link11_L.STL",
+      "bytes": 46584,
+      "mode": "100644",
+      "sha256": "d87cb704d80de840555d0a393117d32f9bd5e91425e0458363e0a799aa4e5339"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link11_R.STL",
+      "bytes": 46884,
+      "mode": "100644",
+      "sha256": "b49b6463f801f0402bac9c65bb989c4097f6d2c1fa1597ba560aedd640561778"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link12_L.STL",
+      "bytes": 917284,
+      "mode": "100644",
+      "sha256": "9f35b78a9cab1007ac8b73023a5862ed055d33951b5742f9a783997d38e99551"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link12_R.STL",
+      "bytes": 921984,
+      "mode": "100644",
+      "sha256": "347212bdb22d80fb364dd889de934d6fbb935e38d1f24c682caed84f7b6ea8cb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link13_L.STL",
+      "bytes": 488584,
+      "mode": "100644",
+      "sha256": "7e93b55f2ae73fe0f62cd27e81d8a4620211068cb1c9b25e6414e802a37541ee"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link13_R.STL",
+      "bytes": 483284,
+      "mode": "100644",
+      "sha256": "c157dfe5b666efb1c3d51342e56f5caad2fc350930ac21ee1e02d956c1034ca3"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link14_L.STL",
+      "bytes": 155184,
+      "mode": "100644",
+      "sha256": "b677bcdcddcd90ff4b005f83daa9e50eb4003d5e67ea4eeefbf857718716c164"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link14_R.STL",
+      "bytes": 155584,
+      "mode": "100644",
+      "sha256": "564aa8c3d2ff0e51b75736a8b01b4c309c7098582a424ea1391ccb75125519d8"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link15_L.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "8c601e7aa8e1c91310a75190dfb6b95a8dc981b707e5f104f9ca9ecbea118b34"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link15_R.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "09c120f7fb7761aa97d89240cd8cb8e30c40ee60093cbb8b1c2e13a68a8e3845"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link16_L.STL",
+      "bytes": 329384,
+      "mode": "100644",
+      "sha256": "7d8508c65db44e2349f37e8ab4c057d204a40093d4733897ae5b51075b00f5e9"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link16_R.STL",
+      "bytes": 335484,
+      "mode": "100644",
+      "sha256": "6942ada1189cdf442124c6b8935f3e3a3ae310092a3a1414fdeb0bd6d23578bb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link17_L.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "ca2a68fed635eca290b234fbdc649779036ba5bac753addcb7ce6a086ad95949"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link17_R.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "36fc62c609800ce6d4521ae6f3c4c9b8a732be28654f32f04893696c17e6930c"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link18_L.STL",
+      "bytes": 182684,
+      "mode": "100644",
+      "sha256": "9425aea7ebbf6d1dfb2eb0714fb44dfaea6b6a81c71d6e96c8d3950f636dfa62"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link18_R.STL",
+      "bytes": 182984,
+      "mode": "100644",
+      "sha256": "9711fac7df0c09a372e1529f74b9d506d37abf3ebc3241d976ad45e5ee7e2d69"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link19_L.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "cbb256a70c17e21c995df66807f0755dc136d0312df245112d6d4bfcd29c43a4"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link19_R.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "46619bd6a887615d7dfe850d39a6f5d8f8c5ecfa9429c567338f3a659a5d4d75"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link20_L.STL",
+      "bytes": 329484,
+      "mode": "100644",
+      "sha256": "e9145af7a515bce4c1c06d16b5be8900ec3f8375fc8e34d371315ce76f600877"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link20_R.STL",
+      "bytes": 334784,
+      "mode": "100644",
+      "sha256": "a517debff6b924c22ae0f87dbb6aac199a1f130c7fef353a7d659e365f30b1f4"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link21_L.STL",
+      "bytes": 407184,
+      "mode": "100644",
+      "sha256": "180ab4ac01dab60407d0b33819883eb0ec869e4d4f349f786972135c7114fc0d"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link21_R.STL",
+      "bytes": 411884,
+      "mode": "100644",
+      "sha256": "ed0a29d2376e8874f724bc2c20384eeec93d8268e59bb8c45628335f7ab6742e"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link22_L.STL",
+      "bytes": 413384,
+      "mode": "100644",
+      "sha256": "5e64ea976ecf08c46e8cb80a5dd56ee3e8c5f36a0573ab3c69160d9337f941e1"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/link22_R.STL",
+      "bytes": 416484,
+      "mode": "100644",
+      "sha256": "1aa3fb46f689251ee38f5262b71364c680f70d1ad1dd9c6f1cae8c098b0e8422"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/logo_link.STL",
+      "bytes": 145484,
+      "mode": "100644",
+      "sha256": "ef9635c847ca7cd61aeaed86ad599935b648fb6f8688867c0448917b1811511b"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/pelvis.STL",
+      "bytes": 672884,
+      "mode": "100644",
+      "sha256": "dc2cbbeb07d3b63bce9fedeb8cf5252609dca1e89380734d22d5b3c8ded2f15c"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_A_link.STL",
+      "bytes": 141984,
+      "mode": "100644",
+      "sha256": "8cf3254c0d25a1c7587657ba52ebd8891585c38061d06e06d37881998b0420a0"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_A_rod_link.STL",
+      "bytes": 44484,
+      "mode": "100644",
+      "sha256": "7fba7ee11152d603a2ab9bcfc19be7e316602b6d8b60ebdb827169ed31be7cfb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_B_link.STL",
+      "bytes": 141984,
+      "mode": "100644",
+      "sha256": "d514277f5a03c6fbd1a0aa7c99a9d0c3f91c07dcb121481c1524806aa74917b9"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_B_rod_link.STL",
+      "bytes": 37884,
+      "mode": "100644",
+      "sha256": "004c1a6a6057e8d87f89f47ac2230e68f0e6278bfbdb1b0466bb242aa1f7245f"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_link.STL",
+      "bytes": 439484,
+      "mode": "100644",
+      "sha256": "4af30aca229a4465b2249d298ebd67d5859a2eeade8c2015035e9c0deb06a33a"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_pitch_link.STL",
+      "bytes": 34084,
+      "mode": "100644",
+      "sha256": "24afc967dfcc867632d756dedff7aa78157c8fdb756a85a3f2a24dde5e5e1d34"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_ankle_roll_link.STL",
+      "bytes": 200484,
+      "mode": "100644",
+      "sha256": "d27424a8eab6e4aa469bce2bdcdd349892a855913f388b7908fdac121a58b7eb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_elbow_link.STL",
+      "bytes": 1286984,
+      "mode": "100644",
+      "sha256": "92a70241128492294eeb26189697335d11a3535c361c461bafb6a190dda6e4a0"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_hand_link.STL",
+      "bytes": 147684,
+      "mode": "100644",
+      "sha256": "8bdf9e424ffcad03646a354fe5a4a08515e523c081070afabcadc9f5f03132e1"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_hip_pitch_link.STL",
+      "bytes": 1264684,
+      "mode": "100644",
+      "sha256": "62083be6d39df68a4899787a314664a6a4f018c6892da9d2aace0ff9d4dede51"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_hip_roll_link.STL",
+      "bytes": 386484,
+      "mode": "100644",
+      "sha256": "1d679aad297f168531ece085b56980c0f6c1820f9992e849ff2bbd40506c05f0"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_hip_yaw_link.STL",
+      "bytes": 840384,
+      "mode": "100644",
+      "sha256": "9a88980120a954339419747e44f81662b943288bffd31bdac9b96fca9c8aaf50"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_knee_link.STL",
+      "bytes": 212384,
+      "mode": "100644",
+      "sha256": "3da90b2f6ff1d5df395ab4cd6955fd29bc2d713107c0e05405c983f0c6ac8689"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_pitch_link.STL",
+      "bytes": 338384,
+      "mode": "100644",
+      "sha256": "27646e67d803c67cd289f53fc6a897ee9bf10b6a273df5e4d00f26b1bf45b496"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_shoulder_pitch_link.STL",
+      "bytes": 1966084,
+      "mode": "100644",
+      "sha256": "e3c2e433a8f8706217e68d677cc62b0c7f605ce43d516713be94a285a0124cdc"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_shoulder_roll_link.STL",
+      "bytes": 2015084,
+      "mode": "100644",
+      "sha256": "5cd93c255c14f16b6265131c5beaa015fc3e00a6cf80041a0be44d3ec55b8d9c"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_shoulder_yaw_link.STL",
+      "bytes": 2158684,
+      "mode": "100644",
+      "sha256": "547b3c72bfbded71c974c34d128b93b491c36a3af780afff6c3a3684277688cb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_wrist_pitch_link.STL",
+      "bytes": 630184,
+      "mode": "100644",
+      "sha256": "11624373f44c3ac8fcccd09abbb2f5eb9490413a41fb0a9f3de71a01509c05ec"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/right_wrist_roll_link.STL",
+      "bytes": 1242984,
+      "mode": "100644",
+      "sha256": "d06e2e62f80ceef841a88055da884fade9235f21b66e272fc51331367a5ea174"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/torso_link.STL",
+      "bytes": 2122084,
+      "mode": "100644",
+      "sha256": "cff9af548d3997aa44167864115ad0564e6e4f8f42dbcad114f1c88029faf0e2"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/assets/wrist_yaw_link.STL",
+      "bytes": 53284,
+      "mode": "100644",
+      "sha256": "a8bf30a2ab2358e0b023de02436d1ab94de959a169c88a2cf0e4bfaacde7c7b3"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/h1_2.xml",
+      "bytes": 18688,
+      "mode": "100644",
+      "sha256": "80325b5d9e69a794899a9c872034f73d9e590e75de4d23f80235945285d6ccc6"
+    },
+    {
+      "path": "src/assets/robots/unitree_h1_2/xmls/scene_h1_2.xml",
+      "bytes": 28176,
+      "mode": "100644",
+      "sha256": "7d230133d4bdfc089303a97b7ac0b0e65c6a1c71b676152a88e84cfa5367aa9f"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/__init__.py",
+      "bytes": 27,
+      "mode": "100644",
+      "sha256": "34f8273e6e0edbd9d6d5c90e75af75c02856c7a8adc8ad3c9a570059c8b307db"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/h2_constants.py",
+      "bytes": 4470,
+      "mode": "100644",
+      "sha256": "fb88ab28a240ba68ab6b6fcdf3afdb008d6a532ef90547935d862d4da9964c2b"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/head_pitch_link.stl",
+      "bytes": 39484,
+      "mode": "100644",
+      "sha256": "b9f084dc3c6dfa647de1d2256e015a90b6e4802897a946bdaf7fb8bc95b9808b"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/head_yaw_link.stl",
+      "bytes": 1122984,
+      "mode": "100644",
+      "sha256": "7f9ad04b2061e7ec34881a6c38b35c41844ea5733b5f9097395c0fe4611a2104"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_ankle_pitch_link.stl",
+      "bytes": 331484,
+      "mode": "100644",
+      "sha256": "89694804959f8ba529f139815a16a3e965b71f58c732a5fb73df591af7fce529"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_ankle_roll_link.stl",
+      "bytes": 36284,
+      "mode": "100644",
+      "sha256": "74ac986409514a7a64b2075b9bea9b3ea535be4a0afddb7f5469474a56a24c09"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_elbow_link.stl",
+      "bytes": 472684,
+      "mode": "100644",
+      "sha256": "3da8b8c0a387fd91911a3fb3dda3ce6a0c56903490d9e08b4536216066211b5f"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_hip_pitch_link.stl",
+      "bytes": 196284,
+      "mode": "100644",
+      "sha256": "92940bf80ab039c73deee7efe5544cd1be2c838f31014f85df6a8118ba65bf79"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_hip_roll_link.stl",
+      "bytes": 1217384,
+      "mode": "100644",
+      "sha256": "b17ddc42849a741783de089bcfa9366a0dbac2d412b0b7d9765c8f1b4c897bc1"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_hip_yaw_link.stl",
+      "bytes": 300884,
+      "mode": "100644",
+      "sha256": "4db0dc55a3216daf23098b3cd0fcd0f493ee6834de19ba30c9b9b9105ca73a76"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_knee_link.stl",
+      "bytes": 698284,
+      "mode": "100644",
+      "sha256": "bcf1bcb72b13e3890d81ea901c4b76a54a8ec402e98cea179a26afa42e35ae19"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_shoulder_pitch_link.stl",
+      "bytes": 266384,
+      "mode": "100644",
+      "sha256": "8002706d5dea52c81218a4f8a263a8946aa7bd7bfd63519067560bb24a4a6a43"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_shoulder_roll_link.stl",
+      "bytes": 304084,
+      "mode": "100644",
+      "sha256": "72c95d87a523b7345beb9c27b6d1286fa2722a0780c3f35d8a296ca923a400ff"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_shoulder_yaw_link.stl",
+      "bytes": 289984,
+      "mode": "100644",
+      "sha256": "0359487eabd083e8af22f39ee480582d67d721db1b423a3b6e4ec27b89e4af45"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_wrist_pitch_link.stl",
+      "bytes": 26584,
+      "mode": "100644",
+      "sha256": "aeca94fc8df7212899d0b925ab6084b3a800cfabb51a9a0c748cbddcc3259340"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_wrist_roll_link.stl",
+      "bytes": 200484,
+      "mode": "100644",
+      "sha256": "1e65c4ab8980228731e2a7aa03536ed37e467903545a099d2dc1761fa8165015"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/left_wrist_yaw_link.stl",
+      "bytes": 964184,
+      "mode": "100644",
+      "sha256": "c33ace683db11d4f471e075730a2fef6994dff25f2eaf8d8d2dd1cc1b73fcf76"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/pelvis.stl",
+      "bytes": 689984,
+      "mode": "100644",
+      "sha256": "d22a3f5b7223c947e4f12b3632e0cc9697cdb23b014e2cd7122e1b639cd5dfd9"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_ankle_pitch_link.stl",
+      "bytes": 330084,
+      "mode": "100644",
+      "sha256": "3cf7609e41ba5e68828ece413dcf094e53ce5e7cb0d4a367711a82f161bd4a67"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_ankle_roll_link.stl",
+      "bytes": 36284,
+      "mode": "100644",
+      "sha256": "b154a7cc719db8866c4e9592afc75f1225c6d40f51b4940022ce07ce0940dfb1"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_elbow_link.stl",
+      "bytes": 476884,
+      "mode": "100644",
+      "sha256": "ebdb0944c76fe93163a0043ba3639174ee1bd4561b3c3212f35adb64a45f8718"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_hip_pitch_link.stl",
+      "bytes": 198484,
+      "mode": "100644",
+      "sha256": "8dc3813d21c902d0414106c56cc8ea399cf9b50f53cccff817ffa84de700ac97"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_hip_roll_link.stl",
+      "bytes": 1223884,
+      "mode": "100644",
+      "sha256": "e015681899a7fcebf7e768d25f1a9896dded2f610d8d846d23a9f15cf4599892"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_hip_yaw_link.stl",
+      "bytes": 297484,
+      "mode": "100644",
+      "sha256": "79c9259351b63634b6d920cfb4e604fb912afcab74d2950ffdb08e9d1a55fe86"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_knee_link.stl",
+      "bytes": 700884,
+      "mode": "100644",
+      "sha256": "541db1cd593ab4b49f7707fdee28383a502a28ddc2b0782db233ac9c2102277a"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_shoulder_pitch_link.stl",
+      "bytes": 266584,
+      "mode": "100644",
+      "sha256": "def627c008549a8d01506b2f9a45358e4eacef3dfe0e41db3a3f376984f42f12"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_shoulder_roll_link.stl",
+      "bytes": 304084,
+      "mode": "100644",
+      "sha256": "57f6709e2f4ed83f190c48e8d8358c6c082f04676798f5520bb8e5046dd939be"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_shoulder_yaw_link.stl",
+      "bytes": 289484,
+      "mode": "100644",
+      "sha256": "a0887440ace338736d5aa1ca6cfd16225a3c7e833be404d7c2b7ebc2180a146d"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_wrist_pitch_link.stl",
+      "bytes": 26584,
+      "mode": "100644",
+      "sha256": "a7a4bdc4ed718102b9d0b7b664bd0b4b21e32ab461ae9e5c0f24e7e1daf94590"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_wrist_roll_link.stl",
+      "bytes": 200484,
+      "mode": "100644",
+      "sha256": "cbfc8715bc87bd1ac29ef0ca4aa2c9f2056a25367e5402deed04deea327583a4"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/right_wrist_yaw_link.stl",
+      "bytes": 964184,
+      "mode": "100644",
+      "sha256": "3fb5391ed692447d273bbc0c766a2d8a816753a4912e277d5bfe692647fc2cfb"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/torso_link.stl",
+      "bytes": 526884,
+      "mode": "100644",
+      "sha256": "140e5c368b8581507ba178e0417f034611efea9b49359372ef392565c671631f"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/waist_roll_link.stl",
+      "bytes": 13084,
+      "mode": "100644",
+      "sha256": "0a49a541585cfdab14ac0627a7c7c1a5d980f1f2f9fae69c5fe9c28461bc8d58"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/assets/waist_yaw_link.stl",
+      "bytes": 20684,
+      "mode": "100644",
+      "sha256": "5a6f78ad483044c456a7744d57a912779afbc232876fa05a7bb5106fc47de981"
+    },
+    {
+      "path": "src/assets/robots/unitree_h2/xmls/h2.xml",
+      "bytes": 22369,
+      "mode": "100644",
+      "sha256": "17b4e16ad12cbda1ac97516f7242f2986d0fdd5dbd66bb830da27b7a37602273"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/__init__.py",
+      "bytes": 27,
+      "mode": "100644",
+      "sha256": "7b1d0e60e1920b150aef7b0649d2d89fb75e094ffcf181df2e2d1d4347ffece1"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/r1_constants.py",
+      "bytes": 4227,
+      "mode": "100644",
+      "sha256": "18b2b56116261243bfa6f05064cb8486fae17025fd531f31f317b0ad5266d98c"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/head_pitch_link.STL",
+      "bytes": 279084,
+      "mode": "100644",
+      "sha256": "4033f7accde03fd5324087e050b23f02b7c647b8414ab086b19a455693c1770e"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/head_yaw_link.STL",
+      "bytes": 3448534,
+      "mode": "100644",
+      "sha256": "341ab55edaeed53beff7571cb7fee83ebba43faad06b7f0690270f6668a8b956"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/imu_in_pelvis_link.STL",
+      "bytes": 105484,
+      "mode": "100644",
+      "sha256": "18991a1994c1b024593434c025423a70f445ceb42474686a010ce02171eeb91b"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_A_link.STL",
+      "bytes": 31384,
+      "mode": "100644",
+      "sha256": "aca5329c86ccfd139a3a2c7c77f8ef4a31358475e86fa7b9b4527897da0be23e"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_A_rod_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "0a6f89503b949a655bd2d736c87e4cc1ec1e5f940777cee72b085039e9f99efa"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_B_link.STL",
+      "bytes": 31384,
+      "mode": "100644",
+      "sha256": "3dd3e50515c1cef76646ea7a30896c58259e0abc9a1ae6d0dde332522bb0c101"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_B_rod_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "511e359ef558e0375b95f87729f80d2a45ba36060a95247d6da6af789df82a6f"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_constraint_A_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "1ed55730009b9ace5df8eb6a1bf07006617eb8d201851b6fa7ae050059b902e2"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_constraint_B_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "e5771eb563d0534494ef087f3cd114d155710d8770c6434962975acbf14e3f84"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_pitch_link.STL",
+      "bytes": 30084,
+      "mode": "100644",
+      "sha256": "221ef28b0b402d054f9649a1f382aeadc75e831b5e6b4623a89376b5a97e8107"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_ankle_roll_link.STL",
+      "bytes": 876084,
+      "mode": "100644",
+      "sha256": "907b910d2a43befe0cfe9990bd457e1f7759c121210aa60cc8ed2a373900dcb5"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_elbow_link.STL",
+      "bytes": 373384,
+      "mode": "100644",
+      "sha256": "b0b5c5a6cd29ab50b43e019acf253ca85ede50ed432524fae6b1dc8cecaed0da"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_hip_pitch_link.STL",
+      "bytes": 538084,
+      "mode": "100644",
+      "sha256": "aca407817f49c1d164c85e025bd1e02f607ba9a3a5834ce6b6473b65e37c189b"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_hip_roll_link.STL",
+      "bytes": 496584,
+      "mode": "100644",
+      "sha256": "c0c625fc25d02b2f49f29a519e07c0c48ca6f9060a301b2147b78cb072bfda08"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_hip_yaw_link.STL",
+      "bytes": 873084,
+      "mode": "100644",
+      "sha256": "d6970cba1e65ede3e2ae3998b699c740486c2854bf07d352b5ab1c6e808f8779"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_knee_collision.STL",
+      "bytes": 63284,
+      "mode": "100644",
+      "sha256": "d5449378faf3e943da5f1a3aae6b903cfb58df6fe067dcc2548e6369924b9a3d"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_knee_link.STL",
+      "bytes": 898684,
+      "mode": "100644",
+      "sha256": "b8eea93f92b8a12b7f09568ff06bbb7b4cf6ab8910486b3a136ac47cdb478772"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_shoulder_pitch_link.STL",
+      "bytes": 420084,
+      "mode": "100644",
+      "sha256": "858948df8d89f36ef3786489e661aaa549e7a3cc510621ed03dafdbae5ee27ca"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_shoulder_roll_link.STL",
+      "bytes": 542884,
+      "mode": "100644",
+      "sha256": "58e4e257b0706bda3f2e01825bef5c8b01b952d378475b021de146d9ff998d03"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_shoulder_yaw_link.STL",
+      "bytes": 649584,
+      "mode": "100644",
+      "sha256": "30d6374e86a6edc392300c0e2ba932b306b34080d0fae47a24bb6cf8cc78d70d"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/left_wrist_roll_link.STL",
+      "bytes": 880984,
+      "mode": "100644",
+      "sha256": "e07a222c29e8ac6b444998f8e60e715f706f187ffbc4e72e4053b71e7e628057"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/pelvis_link.STL",
+      "bytes": 1911634,
+      "mode": "100644",
+      "sha256": "c20eb309093e04b9d791af29f94f053c1244540faf80c42543ce8d6b3cfe5ce4"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_A_link.STL",
+      "bytes": 31384,
+      "mode": "100644",
+      "sha256": "d58e1761fd150814c70060c3ad94b7583db156b51e7b73507dc0c4100593ab5a"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_A_rod_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "ce38596dcd8755b26e84306698a2a1808581b1efa675566e6a4fab12464ad2a8"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_B_link.STL",
+      "bytes": 31384,
+      "mode": "100644",
+      "sha256": "591da4c209994cae72e26fccde7673024f879b5c7626eb9758361087091d02d8"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_B_rod_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "8ce875dddb0a45970b562439a8bc841bbf0f8bee5da221c2b3ebce0f67f36d23"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_constraint_A_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "4c17a00c09cc8d230bc1914b10a0d824fedc3fa29b21131943cf377cad31d7b4"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_constraint_B_link.STL",
+      "bytes": 110984,
+      "mode": "100644",
+      "sha256": "1fea9992e5255199d03bfbc94d553f8a4b48b2bb4a880ba9d9301f48e17d96c4"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_pitch_link.STL",
+      "bytes": 30084,
+      "mode": "100644",
+      "sha256": "7cb97269897f1a49f039b0571acc4f9dec045a7fc327cb123aa886a84e87e7ef"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_ankle_roll_link.STL",
+      "bytes": 874584,
+      "mode": "100644",
+      "sha256": "6e5838218616c0a3861bdf21c84cc51d9e3c92d368fdb40f0f57e2e9e8f21b52"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_elbow_link.STL",
+      "bytes": 360884,
+      "mode": "100644",
+      "sha256": "87b6c05b09814dd6394e6505eb12d5e204c70e445f9566856f8fbf42859b4f8d"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_hip_pitch_link.STL",
+      "bytes": 539584,
+      "mode": "100644",
+      "sha256": "3183192f20513bb8855cf21008739951427b009c415dbc56499c95b540c302ea"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_hip_roll_link.STL",
+      "bytes": 498884,
+      "mode": "100644",
+      "sha256": "a74ec2de69e7b6d1299c925ba3b7e8580e8e9784f5939612a3c28d1595220044"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_hip_yaw_link.STL",
+      "bytes": 864384,
+      "mode": "100644",
+      "sha256": "80b614c49b68bf6bd331fcb897cc58323896d18d7f8a4f064a69b4b882a67ffc"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_knee_collision.STL",
+      "bytes": 63684,
+      "mode": "100644",
+      "sha256": "f52d21e39aa4cbda3543269b7a28409fab2f5664bd3ed69a5be7168dca1f6860"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_knee_link.STL",
+      "bytes": 899984,
+      "mode": "100644",
+      "sha256": "a22b4a2cf9f3a0003a7eab579fbdf5505c3576978074582ce9b7eea5c56529f9"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_shoulder_pitch_link.STL",
+      "bytes": 419584,
+      "mode": "100644",
+      "sha256": "a9a17c0fac0c99c47a3393d4bead4ae09c00770155a572b5faa60cb74ed7f145"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_shoulder_roll_link.STL",
+      "bytes": 535034,
+      "mode": "100644",
+      "sha256": "97e41a1b567ffda5019cdefe9bfe6b0c637b589d07ccaaece5aa4e6ed2b31d15"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_shoulder_yaw_link.STL",
+      "bytes": 647784,
+      "mode": "100644",
+      "sha256": "23d2ce5f3dc432ec5bda3916a88b07251c41c8cfa0dce6f6f94ffb9394c57a49"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/right_wrist_roll_link.STL",
+      "bytes": 881784,
+      "mode": "100644",
+      "sha256": "1e2a25fb75935db59d841f23b5a90b7a0970fbb8d5ce282690d9a3bdda430a68"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/torso_collision.stl",
+      "bytes": 206584,
+      "mode": "100644",
+      "sha256": "2135f7e69a8c4f2d3f09862f58cc428d5e59921a2e81371ca6b9a69bea6b91e2"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/waist_roll_link.STL",
+      "bytes": 366584,
+      "mode": "100644",
+      "sha256": "543684fffebaa20a7869bec461d463ef158915c5bcd224dee1de6e4ff88ba860"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/assets/waist_yaw_link.STL",
+      "bytes": 2082884,
+      "mode": "100644",
+      "sha256": "3210395e719087b8628aacbf839a80ab68b21884786aa1b21e2f0ebe85cff8d4"
+    },
+    {
+      "path": "src/assets/robots/unitree_r1/xmls/r1.xml",
+      "bytes": 20748,
+      "mode": "100644",
+      "sha256": "19c2291ce675217cc193092e59726bbd8d21c53bd5b2599912b60fe538f2de5f"
+    },
+    {
+      "path": "src/tasks/__init__.py",
+      "bytes": 144,
+      "mode": "100644",
+      "sha256": "310ff3bbeed45f4792394e36ff98eb4b5b70e0657c2e5ef67dd363d510133d9b"
+    },
+    {
+      "path": "src/tasks/pie/__init__.py",
+      "bytes": 68,
+      "mode": "100644",
+      "sha256": "0c08b52bba68523d4edb1409a9cb7c77f51e7756357f84ea849bcdebd2f28ed6"
+    },
+    {
+      "path": "src/tasks/pie/backend.py",
+      "bytes": 10735,
+      "mode": "100644",
+      "sha256": "d8343601eacfda68b4c7164a4c9a70e2330fed5072be5629dc8989e8e6a469a2"
+    },
+    {
+      "path": "src/tasks/pie/config/__init__.py",
+      "bytes": 44,
+      "mode": "100644",
+      "sha256": "6ca53dc29711d43e3ba76e6192872ace0add41800da06fbf8bd734e25a2c7abd"
+    },
+    {
+      "path": "src/tasks/pie/config/lite3/__init__.py",
+      "bytes": 374,
+      "mode": "100644",
+      "sha256": "bd2fbc12f196669656265addd642eb4051187d215bf02698a8004f432e93fbf6"
+    },
+    {
+      "path": "src/tasks/pie/config/lite3/env_cfgs.py",
+      "bytes": 1992,
+      "mode": "100644",
+      "sha256": "226f5c5e77966f7595c6906e3055c40d73c129f53fc382a5a9018386f96d6735"
+    },
+    {
+      "path": "src/tasks/pie/config/lite3/rl_cfg.py",
+      "bytes": 205,
+      "mode": "100644",
+      "sha256": "ef90cd6c3aeb7abd5eb2e4c3774542e07b2aad4914fa5387d024756e15f8740e"
+    },
+    {
+      "path": "src/tasks/pie/env_config.py",
+      "bytes": 10714,
+      "mode": "100644",
+      "sha256": "281ea2906a0ffe7a82ec252a7d73f8bbc8eea8371bec5e32c561651f038d1fef"
+    },
+    {
+      "path": "src/tasks/pie/history.py",
+      "bytes": 843,
+      "mode": "100644",
+      "sha256": "708ee89d542efdb67a34be20cd62a6bbeb86f18f76baacc0e88e813496a08ff0"
+    },
+    {
+      "path": "src/tasks/pie/mdp.py",
+      "bytes": 4868,
+      "mode": "100644",
+      "sha256": "87115033b448b33fd1a633ee6a46199dd68af0f0858ab566128782870f87ccca"
+    },
+    {
+      "path": "src/tasks/pie/reproduction.py",
+      "bytes": 3312,
+      "mode": "100644",
+      "sha256": "fa765d53459b46f4dd5163bd83c331fa94f2c56c4f46ae96b3bb47a63fe6fcd2"
+    },
+    {
+      "path": "src/tasks/pie/rl/__init__.py",
+      "bytes": 61,
+      "mode": "100644",
+      "sha256": "1b33c9ea15b23b830d83ac688c08cddc9b2bf79b707c29eb94e220074c0bb34c"
+    },
+    {
+      "path": "src/tasks/pie/rl/learner.py",
+      "bytes": 17005,
+      "mode": "100644",
+      "sha256": "8496b667bb9403c0efec945691bc590220c3c6cd34660848cb7a12dd23c317f9"
+    },
+    {
+      "path": "src/tasks/pie/rl/models.py",
+      "bytes": 10839,
+      "mode": "100644",
+      "sha256": "9fb0265c6ecff4502e0522aef9c0094cffb247e39078e9046def8c98bfc882d6"
+    },
+    {
+      "path": "src/tasks/pie/robots.py",
+      "bytes": 5789,
+      "mode": "100644",
+      "sha256": "bf4248f4e0cf611707cd77ef15cc73e5e36952c10d50545401795e07d3d96e8a"
+    },
+    {
+      "path": "src/tasks/pie/terrains.py",
+      "bytes": 3218,
+      "mode": "100644",
+      "sha256": "5d9f8c3f0b6fe92face73e59afec1c34a1253bda3e41498d0cc7d5ccaeab026f"
+    },
+    {
+      "path": "src/tasks/tracking/__init__.py",
+      "bytes": 55,
+      "mode": "100644",
+      "sha256": "269e19fac2c24adc6064d7c868741fa265f12d78ca07dd12ef7333febde21adf"
+    },
+    {
+      "path": "src/tasks/tracking/config/__init__.py",
+      "bytes": 0,
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/tasks/tracking/config/g1/__init__.py",
+      "bytes": 807,
+      "mode": "100644",
+      "sha256": "998bab278196167af9f704fa6227e42627cbdbc9af14749db0ba0a74054a519f"
+    },
+    {
+      "path": "src/tasks/tracking/config/g1/env_cfgs.py",
+      "bytes": 2960,
+      "mode": "100644",
+      "sha256": "b2553171eb96a671d14409c1bdd6cd91db10ff9ea080c938c9fe73f5e43784db"
+    },
+    {
+      "path": "src/tasks/tracking/config/g1/rl_cfg.py",
+      "bytes": 1154,
+      "mode": "100644",
+      "sha256": "48e98843e3063e2e5798522108add56442cd1885b1255ec172d6e00e32ab586e"
+    },
+    {
+      "path": "src/tasks/tracking/config/g1_23dof/__init__.py",
+      "bytes": 867,
+      "mode": "100644",
+      "sha256": "aeafa17a4af4d0792f4e2fad8241236eb247a3ae2ae1045bb272f71dc3d05704"
+    },
+    {
+      "path": "src/tasks/tracking/config/g1_23dof/env_cfgs.py",
+      "bytes": 3059,
+      "mode": "100644",
+      "sha256": "212b42d0d19aead1a47aedc1c91521caaafb5f332e341f17017ac72c9fedbf49"
+    },
+    {
+      "path": "src/tasks/tracking/config/g1_23dof/rl_cfg.py",
+      "bytes": 1178,
+      "mode": "100644",
+      "sha256": "98640f5127b05d477f7490a8ee31f9b84925cc5ab2e99abb4d90268c9808f181"
+    },
+    {
+      "path": "src/tasks/tracking/mdp/__init__.py",
+      "bytes": 246,
+      "mode": "100644",
+      "sha256": "1c2637ed117786d35fc7a8b72fa36e11134268d8a2aaefa7109ed826c7eb75bf"
+    },
+    {
+      "path": "src/tasks/tracking/mdp/commands.py",
+      "bytes": 18029,
+      "mode": "100644",
+      "sha256": "334fed0ba9c1438c09f096d2a44e2a856042d3d695eb82a125509b9f75c700c5"
+    },
+    {
+      "path": "src/tasks/tracking/mdp/metrics.py",
+      "bytes": 3392,
+      "mode": "100644",
+      "sha256": "8724118a6f8c0873ebea7d773cefa68ecfc3c2892227bb3f4d2380b1db2415a8"
+    },
+    {
+      "path": "src/tasks/tracking/mdp/observations.py",
+      "bytes": 2053,
+      "mode": "100644",
+      "sha256": "af2cf6613d657529455eb254c7b13892ab67a0cf8ea5aec2d4df5fad6b4a5330"
+    },
+    {
+      "path": "src/tasks/tracking/mdp/rewards.py",
+      "bytes": 3971,
+      "mode": "100644",
+      "sha256": "c70dd1652b3021e4a8416c85ec692e2e124f2dbaf4dc7606e0bc4909dc5f71dc"
+    },
+    {
+      "path": "src/tasks/tracking/mdp/terminations.py",
+      "bytes": 2480,
+      "mode": "100644",
+      "sha256": "5f88576b5995408a744cde451c7e43982d2f03284cfeebb8856969ca3dc76019"
+    },
+    {
+      "path": "src/tasks/tracking/rl/__init__.py",
+      "bytes": 88,
+      "mode": "100644",
+      "sha256": "408350c14b2d4edb70916de697c05282600b0929d3acf4005891a2c2ddc8a511"
+    },
+    {
+      "path": "src/tasks/tracking/rl/runner.py",
+      "bytes": 3982,
+      "mode": "100644",
+      "sha256": "e3965be06ffd40f4dc034be3f7f2c2753d1c492ecfbe01e64140cc96442884ed"
+    },
+    {
+      "path": "src/tasks/tracking/tracking_env_cfg.py",
+      "bytes": 8966,
+      "mode": "100644",
+      "sha256": "b49b012c344d4df0ff6fc7cdd5ee3ddc76d135cd7738b7ea3490ce9aa3d6f984"
+    },
+    {
+      "path": "src/tasks/velocity/__init__.py",
+      "bytes": 56,
+      "mode": "100644",
+      "sha256": "479a0ae48d56e95521d9cfd6ccb3bbcebc2bf985355d96879ce3a50d20a142ea"
+    },
+    {
+      "path": "src/tasks/velocity/config/__init__.py",
+      "bytes": 0,
+      "mode": "100644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/tasks/velocity/config/a2/__init__.py",
+      "bytes": 673,
+      "mode": "100644",
+      "sha256": "8d0a603b8053e41e712e088980408578d7e7c0d173925f4a06b404be47a3d51c"
+    },
+    {
+      "path": "src/tasks/velocity/config/a2/env_cfgs.py",
+      "bytes": 5730,
+      "mode": "100644",
+      "sha256": "130878ca621c04f9ae245aefd9a66e290409df290f3fe6ed3248ff696526a7ab"
+    },
+    {
+      "path": "src/tasks/velocity/config/a2/rl_cfg.py",
+      "bytes": 1145,
+      "mode": "100644",
+      "sha256": "13c6c13b9cfc8023f58887fe49fa0d6ffbc4a2f30796974aa4d79f3e17bbe39b"
+    },
+    {
+      "path": "src/tasks/velocity/config/as2/__init__.py",
+      "bytes": 684,
+      "mode": "100644",
+      "sha256": "1bd4ec954eed6ba7147ca52551cce153f554ea14002ddd2978bf3f2c9084d85b"
+    },
+    {
+      "path": "src/tasks/velocity/config/as2/env_cfgs.py",
+      "bytes": 5739,
+      "mode": "100644",
+      "sha256": "4b979f27070295f3f46885f156afd0f5f2e4e27aae5852649a3a343e58b43b6f"
+    },
+    {
+      "path": "src/tasks/velocity/config/as2/rl_cfg.py",
+      "bytes": 1149,
+      "mode": "100644",
+      "sha256": "0bf124c14e466e3f5121584aed46b3071693e25c5df80b646b50c9fbf8c7e4be"
+    },
+    {
+      "path": "src/tasks/velocity/config/g1/__init__.py",
+      "bytes": 673,
+      "mode": "100644",
+      "sha256": "83517a5221dfa27bc746a0a75f502bdd2fb5ce7c24266fd20a4eb22d09862ca8"
+    },
+    {
+      "path": "src/tasks/velocity/config/g1/env_cfgs.py",
+      "bytes": 6776,
+      "mode": "100644",
+      "sha256": "c3ec7ec2730ee0ecbc9da21e493c89161da6a6142084b7400b39ce34492dbed0"
+    },
+    {
+      "path": "src/tasks/velocity/config/g1/rl_cfg.py",
+      "bytes": 1145,
+      "mode": "100644",
+      "sha256": "816d29bc673326ab75d949c542eb7cb8f0f4bbb334a575e316e699ea66f55f7c"
+    },
+    {
+      "path": "src/tasks/velocity/config/g1_23dof/__init__.py",
+      "bytes": 739,
+      "mode": "100644",
+      "sha256": "6acb67b0e0935367172dfb6e3d9a8d44152816f79f4aec6ba82c4c8f4c0f764d"
+    },
+    {
+      "path": "src/tasks/velocity/config/g1_23dof/env_cfgs.py",
+      "bytes": 6728,
+      "mode": "100644",
+      "sha256": "8e35151c8a916bd1d52af765f50ba4c996538d70e542c3b874302a2a7601088c"
+    },
+    {
+      "path": "src/tasks/velocity/config/g1_23dof/rl_cfg.py",
+      "bytes": 1169,
+      "mode": "100644",
+      "sha256": "5c8270d663f26c40e56128f360028e63ab33ea41d412658c1280e1e7a87d4703"
+    },
+    {
+      "path": "src/tasks/velocity/config/go2/__init__.py",
+      "bytes": 684,
+      "mode": "100644",
+      "sha256": "b9694f745b3135396301a621dd57c1d4dbd16fc7e24995cfa378a7a517467771"
+    },
+    {
+      "path": "src/tasks/velocity/config/go2/env_cfgs.py",
+      "bytes": 5739,
+      "mode": "100644",
+      "sha256": "98defb863edccf071070074c31cb77790f83a40276e0589cf2982137c44cd293"
+    },
+    {
+      "path": "src/tasks/velocity/config/go2/rl_cfg.py",
+      "bytes": 1149,
+      "mode": "100644",
+      "sha256": "8850b0544c50731a30d34995a887c79dca625411b3bf2f0317ab5eaf32f50bdc"
+    },
+    {
+      "path": "src/tasks/velocity/config/h1_2/__init__.py",
+      "bytes": 695,
+      "mode": "100644",
+      "sha256": "9e7fdfd68d136ab362a82e024815ee4fd94a4dfb51ca346d04d41f23926932a2"
+    },
+    {
+      "path": "src/tasks/velocity/config/h1_2/env_cfgs.py",
+      "bytes": 6676,
+      "mode": "100644",
+      "sha256": "c3d64b28090d6a77f3c5d72f3d5b2fbb9b80e52759e6697a075cd20f2577ef34"
+    },
+    {
+      "path": "src/tasks/velocity/config/h1_2/rl_cfg.py",
+      "bytes": 1153,
+      "mode": "100644",
+      "sha256": "ec77d26ecec8af153c8b38726a44f920c767b34859c736f4cd82ce3e0fb4c871"
+    },
+    {
+      "path": "src/tasks/velocity/config/h2/__init__.py",
+      "bytes": 673,
+      "mode": "100644",
+      "sha256": "536322fbf2fa1e7841de84368e3de6aed8aad153ac9aa7b28122c04894e1bc8a"
+    },
+    {
+      "path": "src/tasks/velocity/config/h2/env_cfgs.py",
+      "bytes": 6735,
+      "mode": "100644",
+      "sha256": "448f2349ab51636d390efb59c9650ce4df82c47c8825db4157daf106ba8b0692"
+    },
+    {
+      "path": "src/tasks/velocity/config/h2/rl_cfg.py",
+      "bytes": 1145,
+      "mode": "100644",
+      "sha256": "1e3e6600b58f396fa9e6b3d8f7bbe2e010c24537dd2a5b7da6a98258c0b16e47"
+    },
+    {
+      "path": "src/tasks/velocity/config/r1/__init__.py",
+      "bytes": 673,
+      "mode": "100644",
+      "sha256": "1661339b28fd419fe370b246d29a5095c8e15416865a89857f0c01351ea7987b"
+    },
+    {
+      "path": "src/tasks/velocity/config/r1/env_cfgs.py",
+      "bytes": 6718,
+      "mode": "100644",
+      "sha256": "c1d761d8ed0e737f007d4d3968af481b3c00f0de050ff67285b126f488b6a4a1"
+    },
+    {
+      "path": "src/tasks/velocity/config/r1/rl_cfg.py",
+      "bytes": 1145,
+      "mode": "100644",
+      "sha256": "391035799b1778d596e4607b829ca88d45f3ac8ea8157e890cc221270c02df3b"
+    },
+    {
+      "path": "src/tasks/velocity/mdp/__init__.py",
+      "bytes": 258,
+      "mode": "100644",
+      "sha256": "231f35d88929e89ae17dbf403b6d049dd9f1f8bba21bfaf74a087bb9435e7dfe"
+    },
+    {
+      "path": "src/tasks/velocity/mdp/curriculums.py",
+      "bytes": 3324,
+      "mode": "100644",
+      "sha256": "1577cd47b45d6812bee934c4edf89cfaec1b07e16e1acbc21de28049a8324f35"
+    },
+    {
+      "path": "src/tasks/velocity/mdp/observations.py",
+      "bytes": 1941,
+      "mode": "100644",
+      "sha256": "1207e5bdd8b780fcfdf140ee4dc1d0aa787d4df40e0038ccb6f049748e7355df"
+    },
+    {
+      "path": "src/tasks/velocity/mdp/rewards.py",
+      "bytes": 16105,
+      "mode": "100644",
+      "sha256": "5deb9a9ef2bffba30a29c757cf7cb833280e6d18d3e69f430dfa519680ff0034"
+    },
+    {
+      "path": "src/tasks/velocity/mdp/terminations.py",
+      "bytes": 657,
+      "mode": "100644",
+      "sha256": "24d0abf600372026327d32d10f133f9a7cba117de85604515d20eeb7884ba13d"
+    },
+    {
+      "path": "src/tasks/velocity/mdp/velocity_command.py",
+      "bytes": 9876,
+      "mode": "100644",
+      "sha256": "f9f55d5507e318494a690cb7929d4e4ae92419cea76425fbab0873914b279482"
+    },
+    {
+      "path": "src/tasks/velocity/rl/__init__.py",
+      "bytes": 76,
+      "mode": "100644",
+      "sha256": "c0df1a85535f191511cf7ee3d45c6bf9236081e8a72903e0b52e0a017a07d6df"
+    },
+    {
+      "path": "src/tasks/velocity/rl/runner.py",
+      "bytes": 908,
+      "mode": "100644",
+      "sha256": "1a12eb152cb307b57e024814a3a3f9026458759bab6cf43a5cfcccc0b9a0e0cf"
+    },
+    {
+      "path": "src/tasks/velocity/velocity_env_cfg.py",
+      "bytes": 11789,
+      "mode": "100644",
+      "sha256": "87a58574713e66c406ee5defd33240c30646092be495480249c84646799e8bc3"
+    },
+    {
+      "path": "tests/test_backend_contract.py",
+      "bytes": 2039,
+      "mode": "100644",
+      "sha256": "68ecf06e754beef1af252f6a1396e47f9c0b65b77a902ad30f037cba0c3b2612"
+    },
+    {
+      "path": "tests/test_learning.py",
+      "bytes": 7570,
+      "mode": "100644",
+      "sha256": "f4bf0fecc3d73f3eb958b4868aeb59ad8fa30cd14c9eae6d688619d8e45689bf"
+    }
+  ]
+}
