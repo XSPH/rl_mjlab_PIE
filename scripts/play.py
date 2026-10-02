@@ -50,18 +50,25 @@ def run_play(task_id: str, cfg: PlayConfig):
   agent_cfg = load_rl_cfg(task_id)
 
   if task_id == "Unitree-Lite3-PIE":
-    from copy import deepcopy
     import json
     from src.tasks.pie.backend import PieMjlabEnv
+    from src.tasks.pie.config.lite3.env_cfgs import apply_pie_settings
     from src.tasks.pie.rl.learner import evaluate
     if cfg.checkpoint_file is None:
       raise ValueError("PIE play requires --checkpoint-file")
     if cfg.steps < 1:
       raise ValueError("PIE steps must be positive")
+    # Preserve the input units of earlier PIE checkpoints after restoring the
+    # native raw angular/joint-velocity defaults for new formal runs.
+    saved = torch.load(cfg.checkpoint_file, map_location="cpu", weights_only=True)
+    saved_environment = saved.get("environment_config", {})
+    for name in ("angular_velocity_scale", "joint_velocity_scale"):
+      if name in saved_environment:
+        setattr(env_cfg.pie, name, saved_environment[name])
     env_cfg.scene.num_envs = 2 if cfg.num_envs is None else cfg.num_envs
-    pie_cfg = deepcopy(env_cfg.pie)
-    pie_cfg.num_envs, pie_cfg.device = env_cfg.scene.num_envs, device
-    pie_cfg.validate()
+    pie_cfg = apply_pie_settings(env_cfg, device, agent_cfg.seed)
+    if saved.get("format_version", 1) < 2:
+      env_cfg.observations["proprio"].enable_corruption = False
     if cfg.agent != "trained" or cfg.video or cfg.viewer not in ("auto", "none"):
       raise ValueError("PIE play supports bounded trained-checkpoint evaluation with viewer auto/none; video and dummy agents are unsupported.")
     if cfg.no_terminations:

@@ -62,8 +62,8 @@ def run_train(task_id: str, cfg: TrainConfig, log_dir: Path) -> None:
   if task_id == "Unitree-Lite3-PIE":
     from src.tasks.pie.config.lite3.env_cfgs import apply_pie_settings
     pie_cfg = apply_pie_settings(cfg.env, device, seed)
-    if cfg.video or cfg.agent.resume or int(os.environ.get("WORLD_SIZE", "1")) > 1:
-      raise ValueError("PIE minimal reproduction supports single-GPU training without video or optimizer resume.")
+    if cfg.video or int(os.environ.get("WORLD_SIZE", "1")) > 1:
+      raise ValueError("The PIE runner supports single-GPU training; video and distributed training are not implemented.")
 
   print(f"[INFO] Training with: device={device}, seed={seed}, rank={rank}")
 
@@ -123,7 +123,7 @@ def run_train(task_id: str, cfg: TrainConfig, log_dir: Path) -> None:
 
     if task_id == "Unitree-Lite3-PIE":
       from src.tasks.pie.backend import PieMjlabEnv
-      env = PieMjlabEnv(pie_cfg, native_env=env)
+      env = PieMjlabEnv(pie_cfg, native_env=env, clip_actions=cfg.agent.clip_actions)
     else:
       env = RslRlVecEnvWrapper(env, clip_actions=cfg.agent.clip_actions)
 
@@ -147,10 +147,14 @@ def run_train(task_id: str, cfg: TrainConfig, log_dir: Path) -> None:
       dump_yaml(log_dir / "params" / "env.yaml", env_cfg)
       dump_yaml(log_dir / "params" / "agent.yaml", agent_cfg)
 
-    runner.learn(
-      num_learning_iterations=cfg.agent.max_iterations,
-      init_at_random_ep_len=task_id != "Unitree-Lite3-PIE"
-    )
+    iterations = cfg.agent.max_iterations
+    if task_id == "Unitree-Lite3-PIE":
+      # Formal max_iterations is a total target when a checkpoint is resumed.
+      iterations -= runner.current_learning_iteration
+      if iterations <= 0:
+        print(f"[INFO] Checkpoint already reached the target of {cfg.agent.max_iterations} iterations.")
+        return
+    runner.learn(num_learning_iterations=iterations, init_at_random_ep_len=True)
 
   finally:
     if env is not None:
@@ -170,6 +174,8 @@ def launch_training(task_id: str, args: TrainConfig | None = None):
 
   # Select GPUs based on CUDA_VISIBLE_DEVICES and user specification.
   selected_gpus, num_gpus = select_gpus(args.gpu_ids)
+  if task_id == "Unitree-Lite3-PIE" and num_gpus > 1:
+    raise ValueError("Distributed PIE training is not implemented; select one GPU.")
 
   # Set environment variables for all modes.
   if selected_gpus is None:

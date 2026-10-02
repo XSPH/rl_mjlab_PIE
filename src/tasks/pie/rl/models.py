@@ -3,8 +3,9 @@ from dataclasses import dataclass
 from typing import Tuple
 import torch
 from torch import nn
-from torch.distributions import Normal
 from rsl_rl.modules import MLP
+from rsl_rl.modules.distribution import GaussianDistribution
+from rsl_rl.modules.normalization import EmpiricalNormalization
 
 @dataclass
 class ModelConfig:
@@ -20,7 +21,9 @@ class ModelConfig:
     map_latent_dim: int = 32
     transformer_heads: int = 4
     transformer_layers: int = 1
-    initial_std: float = 0.5
+    initial_std: float = 1.0
+    actor_obs_normalization: bool = True
+    critic_obs_normalization: bool = True
     # Reproduction choices, with evidence/rationale in PIE_NETWORK.md.
     proprio_hidden_dims: Tuple[int, ...] = (512, 256)
     cnn_hidden_channels: Tuple[int, int] = (32, 64)
@@ -127,13 +130,16 @@ class PIEActorCritic(nn.Module):
         self.height_decoder = mlp(cfg.map_latent_dim, cfg.height_decoder_hidden_dims, cfg.heightmap_dim)
         self.actor = mlp(cfg.proprio_dim + estimate_dim, cfg.actor_hidden_dims, cfg.action_dim)
         self.critic = mlp(cfg.critic_dim, cfg.critic_hidden_dims, 1)
-        if cfg.initial_std <= 0:
-            raise ValueError("initial_std must be positive")
-        self.log_std = nn.Parameter(torch.full((cfg.action_dim,), cfg.initial_std).log())
+        self.actor_normalizer = (EmpiricalNormalization(cfg.proprio_dim + estimate_dim)
+                                 if cfg.actor_obs_normalization else nn.Identity())
+        self.critic_normalizer = (EmpiricalNormalization(cfg.critic_dim)
+                                  if cfg.critic_obs_normalization else nn.Identity())
+        self.output_distribution = GaussianDistribution(
+            cfg.action_dim, init_std=cfg.initial_std, std_type="scalar")
 
     def initial_state(self, batch_size, device=None):
         return torch.zeros(batch_size, self.cfg.gru_dim,
-                           device=device or self.log_std.device)
+                           device=device or self.output_distribution.std_param.device)
 
     def encode(self, obs, hidden, reset_mask=None):
         if reset_mask is not None:
@@ -155,13 +161,31 @@ class PIEActorCritic(nn.Module):
         return torch.cat((estimates["velocity"], estimates["foot_clearance"],
                           estimates["map_latent"], estimates["mu"] if z is None else z), dim=-1)
 
+    def features_from_hidden(self, hidden):
+        return torch.cat((self.velocity_head(hidden), self.clearance_head(hidden),
+                          self.map_head(hidden), self.mu_head(hidden)), dim=-1)
+
     def distribution(self, obs, hidden, reset_mask=None):
         estimates, hidden = self.encode(obs, hidden, reset_mask)
-        mean = self.actor(torch.cat((obs["proprio"], self.features(estimates)), dim=-1))
-        return Normal(mean, self.log_std.clamp(-5, 2).exp()), hidden, estimates
+        inputs = torch.cat((obs["proprio"], self.features(estimates)), dim=-1)
+        mean = self.actor(self.actor_normalizer(inputs))
+        self.output_distribution.update(mean)
+        return self.output_distribution._distribution, hidden, estimates
 
     def value(self, obs):
-        return self.critic(obs["critic"]).squeeze(-1)
+        return self.critic(self.critic_normalizer(obs["critic"])).squeeze(-1)
+
+    @torch.no_grad()
+    def update_normalization(self, actor_inputs, critic_inputs):
+        """Update only network-input statistics; estimator labels remain in physical units.
+
+        The learner calls this at rollout boundaries, keeping statistics fixed
+        throughout collection, likelihood replay and optimization.
+        """
+        if self.cfg.actor_obs_normalization:
+            self.actor_normalizer.update(actor_inputs)
+        if self.cfg.critic_obs_normalization:
+            self.critic_normalizer.update(critic_inputs)
 
     def act(self, obs, hidden, reset_mask=None, deterministic=False):
         dist, hidden, estimates = self.distribution(obs, hidden, reset_mask)

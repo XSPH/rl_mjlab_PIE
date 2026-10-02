@@ -26,7 +26,7 @@ def clone_observation(observation):
 class PieMjlabEnv:
     """Learner-facing vector environment with clean depth and privileged targets."""
 
-    def __init__(self, cfg: EnvironmentConfig, native_cfg=None, native_env=None):
+    def __init__(self, cfg: EnvironmentConfig, native_cfg=None, native_env=None, clip_actions=None):
         cfg.validate()
         if version("mjlab") != "1.6.0":
             raise RuntimeError("This backend requires mjlab==1.6.0; use this project's separate environment.")
@@ -35,6 +35,7 @@ class PieMjlabEnv:
         if not torch.cuda.is_available():
             raise RuntimeError("CUDA is unavailable; use the dedicated PIE Conda environment and a CUDA GPU.")
         self.cfg = cfg
+        self.clip_actions = clip_actions
         self.num_envs = cfg.num_envs
         self.num_actions = 12
         self.device = torch.device(cfg.device)
@@ -121,7 +122,8 @@ class PieMjlabEnv:
         return {"proprio": proprio,
                 "proprio_history": self._proprio_history.data.clone(),
                 "depth": self._depth_history.data.clone(),
-                "critic": torch.cat((proprio, targets["velocity"], targets["heightmap"]), -1),
+                "critic": torch.cat((self.env.obs_buf["critic_proprio"].clone(),
+                                     targets["velocity"], targets["heightmap"]), -1),
                 "targets": targets}
 
     def _reset_histories(self, ids):
@@ -156,8 +158,10 @@ class PieMjlabEnv:
             raise ValueError("Actions contain nonfinite values.")
         self._step += 1
         self._render_due = self._step % self._camera_period == 0
-        _, rewards, terminated, truncated, extras = self.env.step(
-            actions.to(self.device).clamp(-4.0, 4.0)[:, self._to_native])
+        native_actions = actions.to(self.device)
+        if self.clip_actions is not None:
+            native_actions = native_actions.clamp(-self.clip_actions, self.clip_actions)
+        _, rewards, terminated, truncated, extras = self.env.step(native_actions[:, self._to_native])
         rewards, terminated, truncated = rewards.clone(), terminated.clone(), truncated.clone()
         invalid_reward = ~torch.isfinite(rewards)
         terminated |= invalid_reward
@@ -195,7 +199,8 @@ class PieMjlabEnv:
         info["depth_frame_ids"] = self._depth_frame_ids.data.clone().long()
         if len(ids):
             self._render_due = True
-            self.env.reset(env_ids=ids)
+            _, reset_extras = self.env.reset(env_ids=ids)
+            info["log"].update(reset_extras.get("log", {}))
             self._reset_histories(ids)
             observation = self._snapshot()
             # A partial reset recomputes raycasts for all worlds, but proprio histories

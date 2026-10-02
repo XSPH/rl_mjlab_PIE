@@ -8,6 +8,7 @@ from src.tasks.pie.config.lite3.env_cfgs import apply_pie_settings, lite3_pie_en
 
 def main():
     cfg = lite3_pie_env_cfg()
+    cfg.scene.num_envs = 2
     cfg.pie.terrain_rows = 1
     cfg.pie.curriculum = False
     pie = apply_pie_settings(cfg, "cuda:0", 7)

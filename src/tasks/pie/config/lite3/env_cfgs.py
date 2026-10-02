@@ -11,7 +11,7 @@ class Lite3PIEEnvCfg(ManagerBasedRlEnvCfg):
 
 
 def lite3_pie_env_cfg(play=False):
-    pie = EnvironmentConfig(num_envs=2)
+    pie = EnvironmentConfig(num_envs=2) if play else EnvironmentConfig()
     if play:
         pie.randomization = False
         pie.curriculum = False

@@ -38,9 +38,9 @@
     },
     {
       "path": "PIE_NETWORK.md",
-      "bytes": 7078,
+      "bytes": 7549,
       "mode": "100644",
-      "sha256": "89ee93506443fd65fa5ca59edf78cfb5ba9dd59ae6fbd83dd61b4d3eb263d7f4"
+      "sha256": "f8cb5da4cbc3fd9a152532240bff45ee1818a3753e911167ad0cf942310f52ba"
     },
     {
       "path": "PUBLICATION.md",
@@ -56,9 +56,9 @@
     },
     {
       "path": "README_PIE.md",
-      "bytes": 4564,
+      "bytes": 6128,
       "mode": "100644",
-      "sha256": "853c2805c41f0f51cabc27c561b786421beccbe5599d814e90f095f4653a4aa6"
+      "sha256": "0bc42caed43f02eee56358aff00915befbe7257f4304c34548a08c76047212fc"
     },
     {
       "path": "README_zh.md",
@@ -859,6 +859,12 @@
       "sha256": "dfbd996306be59a6add3cbe35d76cb81e0f2228c87bf55de0ebb940833f725af"
     },
     {
+      "path": "docs/formal_training_review_2026-10-02.md",
+      "bytes": 15739,
+      "mode": "100644",
+      "sha256": "7da8f38aa9b20a174d06a3b86adf06ef380f756100ef54b4c9f24a9edbb724a7"
+    },
+    {
       "path": "docs/implementation_plan.md",
       "bytes": 2189,
       "mode": "100644",
@@ -902,9 +908,9 @@
     },
     {
       "path": "scripts/check_pie_backend.py",
-      "bytes": 2648,
+      "bytes": 2675,
       "mode": "100644",
-      "sha256": "1b6303140032776ced0c12ba7cf085af618ffcd21104f60132560f47d68c859c"
+      "sha256": "c1556c8ce5199b2b0bd8f98588be7253363eb0e61fe0f7704151c1b713d53d27"
     },
     {
       "path": "scripts/csv_to_npz.py",
@@ -920,15 +926,15 @@
     },
     {
       "path": "scripts/play.py",
-      "bytes": 8141,
+      "bytes": 8681,
       "mode": "100644",
-      "sha256": "013e27b1f073dc2e7996c7daa80b6482c4262c15e548f9a14440fb017e23d3ca"
+      "sha256": "5ec0f68f0e29fcb2fa5980f253ea4347ffed44c979e196acb9745760746fdaf1"
     },
     {
       "path": "scripts/train.py",
-      "bytes": 8077,
+      "bytes": 8542,
       "mode": "100644",
-      "sha256": "452f6aba2563c6c3efc9efb1f51ac31cd003134d055381ab1ce92dd35bfc15ca"
+      "sha256": "78da0c8b86b58b35896e845737ccc2cbf68067511202f979450c0f8873bb069c"
     },
     {
       "path": "scripts/visualize_terrain.py",
@@ -4214,9 +4220,9 @@
     },
     {
       "path": "src/tasks/pie/backend.py",
-      "bytes": 10735,
+      "bytes": 11086,
       "mode": "100644",
-      "sha256": "d8343601eacfda68b4c7164a4c9a70e2330fed5072be5629dc8989e8e6a469a2"
+      "sha256": "ca85347e08bb3cb985498b572a80ce197d91ecab4d227a1af7a3abd2a66207a2"
     },
     {
       "path": "src/tasks/pie/config/__init__.py",
@@ -4232,21 +4238,21 @@
     },
     {
       "path": "src/tasks/pie/config/lite3/env_cfgs.py",
-      "bytes": 1992,
+      "bytes": 2025,
       "mode": "100644",
-      "sha256": "226f5c5e77966f7595c6906e3055c40d73c129f53fc382a5a9018386f96d6735"
+      "sha256": "bcc1bc8a7b20bfbce201d2be21e1f4fb294a0ae760bc7e2b9b7b84e9081c8fc4"
     },
     {
       "path": "src/tasks/pie/config/lite3/rl_cfg.py",
-      "bytes": 205,
+      "bytes": 142,
       "mode": "100644",
-      "sha256": "ef90cd6c3aeb7abd5eb2e4c3774542e07b2aad4914fa5387d024756e15f8740e"
+      "sha256": "84ea012883def174f2132f4fde2cfc9393f1b4f894f79ea35b4b5aaf2d4b1785"
     },
     {
       "path": "src/tasks/pie/env_config.py",
-      "bytes": 10714,
+      "bytes": 11885,
       "mode": "100644",
-      "sha256": "281ea2906a0ffe7a82ec252a7d73f8bbc8eea8371bec5e32c561651f038d1fef"
+      "sha256": "24c56cd4bedbe9672a1521fb7de56f317dcf80e240874c9a7b2bdd7683257575"
     },
     {
       "path": "src/tasks/pie/history.py",
@@ -4256,15 +4262,15 @@
     },
     {
       "path": "src/tasks/pie/mdp.py",
-      "bytes": 4868,
+      "bytes": 4866,
       "mode": "100644",
-      "sha256": "87115033b448b33fd1a633ee6a46199dd68af0f0858ab566128782870f87ccca"
+      "sha256": "a08469d5dc88eebef799edb1e55d64df4de2f7af71c9162c20eaa01951fc82b6"
     },
     {
       "path": "src/tasks/pie/reproduction.py",
-      "bytes": 3312,
+      "bytes": 3313,
       "mode": "100644",
-      "sha256": "fa765d53459b46f4dd5163bd83c331fa94f2c56c4f46ae96b3bb47a63fe6fcd2"
+      "sha256": "034d235effe2e12dd1588e5998dc7468b18b27cae013bf33bb54e0b6a720827a"
     },
     {
       "path": "src/tasks/pie/rl/__init__.py",
@@ -4274,15 +4280,15 @@
     },
     {
       "path": "src/tasks/pie/rl/learner.py",
-      "bytes": 17005,
+      "bytes": 28642,
       "mode": "100644",
-      "sha256": "8496b667bb9403c0efec945691bc590220c3c6cd34660848cb7a12dd23c317f9"
+      "sha256": "d7b76395cee5ce6ff727ea08a8beabec3be57a109f881d4da1530c61464ad239"
     },
     {
       "path": "src/tasks/pie/rl/models.py",
-      "bytes": 10839,
+      "bytes": 12166,
       "mode": "100644",
-      "sha256": "9fb0265c6ecff4502e0522aef9c0094cffb247e39078e9046def8c98bfc882d6"
+      "sha256": "9563fb598c5ef632a6d8eec76d6d16e84ca7e34620e8bdc2bf7a0e46d84e760c"
     },
     {
       "path": "src/tasks/pie/robots.py",
@@ -4610,15 +4616,15 @@
     },
     {
       "path": "tests/test_backend_contract.py",
-      "bytes": 2039,
+      "bytes": 5749,
       "mode": "100644",
-      "sha256": "68ecf06e754beef1af252f6a1396e47f9c0b65b77a902ad30f037cba0c3b2612"
+      "sha256": "dd75609ceb7b898c6d3adc22d07a069b0603cce5932993f00cdccdc608b8fbce"
     },
     {
       "path": "tests/test_learning.py",
-      "bytes": 7570,
+      "bytes": 17575,
       "mode": "100644",
-      "sha256": "f4bf0fecc3d73f3eb958b4868aeb59ad8fa30cd14c9eae6d688619d8e45689bf"
+      "sha256": "6f5c711d03f5c8e4cc12f888fe31d98cc228d792a3fe3f8f9edaa399350264c1"
     }
   ]
 }

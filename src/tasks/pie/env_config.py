@@ -15,6 +15,7 @@ from mjlab.sensor import (CameraSensorCfg, ContactMatch, ContactSensorCfg, GridP
 from mjlab.sim import MujocoCfg, SimulationCfg
 from mjlab.tasks.velocity.mdp import UniformVelocityCommandCfg
 from mjlab.terrains import TerrainEntityCfg, TerrainGeneratorCfg
+from mjlab.utils.noise import UniformNoiseCfg
 
 from . import mdp
 from .reproduction import EnvironmentConfig
@@ -35,9 +36,6 @@ class RaisedGridPatternCfg(GridPatternCfg):
 def make_env_config(cfg: EnvironmentConfig) -> ManagerBasedRlEnvCfg:
     cfg.validate()
     entity, robot = make_robot_config(cfg)
-    robot_spec = entity.spec_fn()
-    action_joint_limits = {name: tuple(float(value) for value in robot_spec.joint(name).range)
-                           for name in robot.joints}
     scan_shape = cfg.heightmap_shape
     height_scan = RayCastSensorCfg(
         name="height_scan", frame=ObjRef(type="body", name=robot.base, entity="robot"),
@@ -45,7 +43,7 @@ def make_env_config(cfg: EnvironmentConfig) -> ManagerBasedRlEnvCfg:
             size=((scan_shape[0] - 1) * cfg.heightmap_spacing,
                   (scan_shape[1] - 1) * cfg.heightmap_spacing),
             resolution=cfg.heightmap_spacing),
-        ray_alignment="yaw", max_distance=4.0, include_geom_groups=(0,),
+        ray_alignment="yaw", max_distance=5.0, include_geom_groups=(0,),
     )
     feet_frames = tuple(ObjRef(type="site" if cfg.robot == "lite3" else "geom",
                               name=f"{foot}_scan" if cfg.robot == "lite3" else geom,
@@ -100,6 +98,15 @@ def make_env_config(cfg: EnvironmentConfig) -> ManagerBasedRlEnvCfg:
         base = SceneEntityCfg("robot", body_names=(robot.base,))
         camera = SceneEntityCfg("robot", camera_names=("depth_camera",))
         events.update({
+            "push_robot": EventTermCfg(func=base_mdp.push_by_setting_velocity, mode="interval",
+                                       interval_range_s=(5.0, 6.0),
+                                       params={"velocity_range": {
+                                           "x": (-0.5, 0.5), "y": (-0.5, 0.5), "z": (-0.4, 0.4),
+                                           "roll": (-0.52, 0.52), "pitch": (-0.52, 0.52),
+                                           "yaw": (-0.78, 0.78)}}),
+            "encoder_bias": EventTermCfg(func=dr.encoder_bias, mode="startup",
+                                         params={"asset_cfg": SceneEntityCfg("robot"),
+                                                 "bias_range": (-0.015, 0.015)}),
             "payload": EventTermCfg(func=dr.body_mass, mode="startup",
                                     params={"asset_cfg": base, "ranges": (-1.0, 2.0), "operation": "add"}),
             "base_com": EventTermCfg(func=dr.body_com_offset, mode="startup",
@@ -134,26 +141,33 @@ def make_env_config(cfg: EnvironmentConfig) -> ManagerBasedRlEnvCfg:
         "mechanical_power": -2e-5, "nonfoot_collision": -10.0,
         "action_rate": -0.01, "action_smoothness": -0.01,
     }
+    # Native velocity-task noise in the canonical PIE vector: omega, gravity,
+    # command, joint position, joint velocity, previous action. Depth stays clean.
+    noise = ((0.2 * cfg.angular_velocity_scale,) * 3 + (0.05,) * 3 + (0.0,) * 3
+             + (0.01,) * 12 + (1.5 * cfg.joint_velocity_scale,) * 12 + (0.0,) * 12)
+    proprio_params = {"joint_names": robot.joints, "angular_scale": cfg.angular_velocity_scale,
+                      "joint_velocity_scale": cfg.joint_velocity_scale,
+                      "relative_joint_positions": cfg.relative_joint_positions}
     pie = ManagerBasedRlEnvCfg(
         seed=cfg.seed, decimation=round(cfg.control_dt / cfg.physics_dt), auto_reset=False,
         episode_length_s=cfg.episode_seconds,
-        sim=SimulationCfg(mujoco=MujocoCfg(timestep=cfg.physics_dt, cone="elliptic",
-                                         iterations=50, ls_iterations=20),
-                          nconmax=64, njmax=256, contact_sensor_maxmatch=64),
+        sim=SimulationCfg(mujoco=MujocoCfg(timestep=cfg.physics_dt, cone="pyramidal",
+                                         iterations=10, ls_iterations=20),
+                          nconmax=35, njmax=1500),
         scene=SceneCfg(num_envs=cfg.num_envs, entities={"robot": entity}, terrain=terrain,
                        sensors=(depth_camera, height_scan, feet_scan, feet_contact, nonfoot, base_contact)),
         observations={"proprio": ObservationGroupCfg(
-            terms={"proprio": ObservationTermCfg(func=mdp.proprioception,
-                    params={"joint_names": robot.joints, "angular_scale": cfg.angular_velocity_scale,
-                            "joint_velocity_scale": cfg.joint_velocity_scale,
-                            "relative_joint_positions": cfg.relative_joint_positions})},
-            concatenate_terms=True, enable_corruption=False)},
+            terms={"proprio": ObservationTermCfg(func=mdp.proprioception, params=proprio_params,
+                    noise=UniformNoiseCfg(n_min=tuple(-v for v in noise), n_max=noise))},
+            concatenate_terms=True, enable_corruption=True, history_length=1),
+            "critic_proprio": ObservationGroupCfg(
+                terms={"proprio": ObservationTermCfg(func=mdp.proprioception, params=dict(proprio_params))},
+                concatenate_terms=True, enable_corruption=False, history_length=1)},
         actions={"joint_pos": JointPositionActionCfg(entity_name="robot", actuator_names=(".*",),
-                                                      scale=cfg.action_scale, use_default_offset=True,
-                                                      clip=action_joint_limits)},
+                                                      scale=cfg.action_scale, use_default_offset=True)},
         commands={"twist": UniformVelocityCommandCfg(
-            entity_name="robot", resampling_time_range=(4.0, 8.0),
-            rel_standing_envs=0.1, rel_forward_envs=0.3, heading_command=False,
+            entity_name="robot", resampling_time_range=(3.0, 8.0),
+            rel_standing_envs=0.05, rel_forward_envs=0.0, heading_command=False,
             ranges=UniformVelocityCommandCfg.Ranges(lin_vel_x=(0.0, 1.5),
                                                     lin_vel_y=(0.0, 0.0), ang_vel_z=(-1.2, 1.2)))},
         events=events,

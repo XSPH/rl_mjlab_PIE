@@ -27,15 +27,15 @@ class CameraConfig:
 @dataclass
 class EnvironmentConfig:
     robot: str = "lite3"
-    num_envs: int = 2
+    num_envs: int = 4096
     device: str = "cuda:0"
     seed: int = 42
     physics_dt: float = 0.005
     control_dt: float = 0.02
     episode_seconds: float = 20.0
     proprio_history: int = 10
-    angular_velocity_scale: float = 0.25
-    joint_velocity_scale: float = 0.05
+    angular_velocity_scale: float = 1.0
+    joint_velocity_scale: float = 1.0
     relative_joint_positions: bool = True
     action_scale: float = 0.25
     kp: float = 30.0
@@ -47,7 +47,7 @@ class EnvironmentConfig:
     terrain_length: float = 8.0
     terrain_width: float = 3.0
     curriculum: bool = True
-    max_initial_level: int = 1
+    max_initial_level: int = 5
     randomization: bool = True
     camera: CameraConfig = field(default_factory=CameraConfig)
 

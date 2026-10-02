@@ -6,7 +6,25 @@
 
 环境扩展宇树原 `make_velocity_env_cfg()`。原入口创建 `ManagerBasedRlEnv`，PIE adapter 包装同一实例。与 Isaac Gym 项目无相互运行依赖。
 
-## 独立环境与最小运行
+## 正式训练
+
+依赖齐全的独立环境中，在发布仓库目录执行：
+
+```bash
+conda activate pie-mjlab
+cd ~/rl_mjlab_PIE
+python scripts/train.py Unitree-Lite3-PIE
+```
+
+默认4096环境、15000总迭代、每500轮保存、24步rollout、seed42。PPO恢复1e-3/5 epochs/4 minibatches/adaptive/KL 0.01；新训练std=1.0，使用原生scalar Gaussian和actor/critic运行统计归一化。本体噪声、随机推扰、编码器偏置恢复，深度图仍无图像噪声/滤波。参数和平台差异见[正式训练审查](docs/formal_training_review_2026-10-02.md)。
+
+```bash
+python scripts/train.py Unitree-Lite3-PIE --agent.resume=True --agent.load-run '<运行目录名>' --agent.load-checkpoint 'model_500.pt'
+```
+
+加载当前PIE实现的模型/Adam/归一化统计与累计轮次，重新开始仿真回合和GRU；加载500轮模型后继续14500轮。旧log_std模型支持权重评估，旧Adam状态不能续训。服务器pie-mjlab依赖此前按用户要求暂停下载，需完成依赖配置后才能运行；本次没有恢复下载。
+
+## 独立环境与可选最小检查
 
 ```bash
 conda activate /home/asuka/Legged/parkour/.conda-envs/pie-mjlab
@@ -17,7 +35,7 @@ python -s scripts/train.py Unitree-Lite3-PIE --env.scene.num-envs=2 --agent.max-
 python -s scripts/play.py Unitree-Lite3-PIE --num-envs 2 --steps 4 --viewer none --checkpoint-file logs/rsl_rl/lite3_pie/2026-09-30_21-53-53_minimal/checkpoint.pt
 ```
 
-play 使用本次已保存 checkpoint；新训练目录带新时间戳。默认 2 环境、8 步 rollout、1 iteration。check 仅做 2 环境、18 个控制步，无 PPO 更新。
+play 使用本次已保存 checkpoint；新训练目录带新时间戳。正式默认 4096 环境、24 步 rollout、15000总迭代、每500轮保存；上面命令显式覆盖为最小验证。check 仅做 2 环境、18 个控制步，无 PPO 更新。
 
 环境为 Python 3.11、Torch 2.14.0、mjlab 1.6.0、MuJoCo/MuJoCo Warp 3.11.0、Warp 1.17.0、rsl_rl 5.4.2。只更新新环境，原 mjlab 1.2 环境保留。`environment.pie.yml` 是配方；依赖齐全后在新环境运行 `python -s -m pip install -e . --no-deps --no-build-isolation` 安装本仓库。
 
@@ -46,6 +64,6 @@ play 使用本次已保存 checkpoint；新训练目录带新时间戳。默认 
 
 此前只验证 CPU、GPU 相机/延迟/reset、一次 2×16 条 transition 联合更新和 checkpoint 4 步 headless 回放。2026-10-01 网络配置调整与随后的代码修复仅做静态审查，历史记录不代表当前源码已重新运行。[完整审查记录](docs/code_review_2026-10-01.md)。
 
-同一 PIE runner 多次调用 `learn()` 会保留模型、Adam 和 GRU/观测状态并累计 iteration。未验证跑酷成功率或真机。PIE 仅支持单 GPU、无视频的最小训练；optimizer resume、ONNX 导出和交互 viewer 未实现。
+2026-10-02恢复正式默认，并完成CPU检查；未运行4096环境的GPU训练或验证跑酷成功率/真机。同一PIE runner多次调用 `learn()` 保留模型、Adam和GRU/观测状态并累计iteration；checkpoint续训恢复权重、Adam/LR、归一化统计和轮次，仿真回合/GRU重新初始化。周期保存 `model_500.pt` 等，结束保存最终编号模型和 `checkpoint.pt`，使用原子写入。TensorBoard记录原生实际奖励分项、五项PIE辅助损失、总损失、策略KL和动作std，终端/JSON继续显示PIE指标。支持单GPU训练；视频、多GPU、ONNX导出、交互viewer及非TensorBoard日志后端尚未实现。
 
 相机降频依赖固定版本 `Simulation._sensor_context` 内部接口。mjlab 电机强度随机化用 effort cap 倍率，与 Isaac Gym 完整力矩倍率不同。上游任务保留并通过注册导入；为兼容 1.6 调整资产加载和显式 collision mask，本轮未物理验证所有其他机器人任务。

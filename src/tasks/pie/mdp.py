@@ -8,8 +8,8 @@ def canonical_joint_ids(env, joint_names):
     return torch.tensor([robot.joint_names.index(name) for name in joint_names], device=env.device)
 
 
-def proprioception(env, joint_names, angular_scale=0.25,
-                   joint_velocity_scale=0.05, relative_joint_positions=True):
+def proprioception(env, joint_names, angular_scale=1.0,
+                   joint_velocity_scale=1.0, relative_joint_positions=True):
     data = env.scene["robot"].data
     ids = canonical_joint_ids(env, joint_names)
     joints = data.joint_pos[:, ids]
